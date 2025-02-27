@@ -95,9 +95,15 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask getOffByButtonEnable() {
+    public static OrderTask getHallPowerOnMethod() {
         ParamsReadTask task = new ParamsReadTask();
-        task.setData(ParamsKeyEnum.KEY_OFF_BY_BUTTON);
+        task.setData(ParamsKeyEnum.KEY_HALL_POWER_ON_METHOD);
+        return task;
+    }
+
+    public static OrderTask getOffByHall() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_OFF_BY_HALL);
         return task;
     }
 
@@ -145,7 +151,7 @@ public class OrderTaskAssembler {
 
     public static OrderTask getOffByMagneticEnable() {
         ParamsReadTask task = new ParamsReadTask();
-        task.setData(ParamsKeyEnum.KEY_OFF_BY_BUTTON);
+        task.setData(ParamsKeyEnum.KEY_OFF_BY_HALL);
         return task;
     }
 
@@ -175,21 +181,21 @@ public class OrderTaskAssembler {
 
     public static OrderTask getBatteryInfo() {
         ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_BATTERY_INFO);
+        return task;
+    }
+
+    public static OrderTask getBatteryInfoAll() {
+        ParamsReadTask task = new ParamsReadTask();
         task.setData(ParamsKeyEnum.KEY_BATTERY_INFO_ALL);
         return task;
     }
-//
-//    public static OrderTask getBatteryInfoAll() {
-//        ParamsReadTask task = new ParamsReadTask();
-//        task.setData(ParamsKeyEnum.KEY_BATTERY_INFO_ALL);
-//        return task;
-//    }
-//
-//    public static OrderTask getBatteryInfoLast() {
-//        ParamsReadTask task = new ParamsReadTask();
-//        task.setData(ParamsKeyEnum.KEY_BATTERY_INFO_LAST);
-//        return task;
-//    }
+
+    public static OrderTask getBatteryInfoLast() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_BATTERY_INFO_LAST);
+        return task;
+    }
 
     public static OrderTask getPasswordVerifyEnable() {
         ParamsReadTask task = new ParamsReadTask();
@@ -404,6 +410,7 @@ public class OrderTaskAssembler {
         task.setData(ParamsKeyEnum.KEY_BLE_POS_MAC_NUMBER);
         return task;
     }
+
     public static OrderTask getVoltageReportEnable() {
         ParamsReadTask task = new ParamsReadTask();
         task.setData(ParamsKeyEnum.KEY_VOLTAGE_REPORT_ENABLE);
@@ -909,9 +916,54 @@ public class OrderTaskAssembler {
     }
 
 
-    public static OrderTask getDownLinkPosStrategy() {
+//    public static OrderTask getDownLinkPosStrategy() {
+//        ParamsReadTask task = new ParamsReadTask();
+//        task.setData(ParamsKeyEnum.KEY_DOWN_LINK_POS_STRATEGY);
+//        return task;
+//    }
+
+
+    public static OrderTask getAlarmEnable(int type) {
         ParamsReadTask task = new ParamsReadTask();
-        task.setData(ParamsKeyEnum.KEY_DOWN_LINK_POS_STRATEGY);
+        if (type == 0)
+            task.setData(ParamsKeyEnum.KEY_ALARM_ENABLE_1);
+        if (type == 1)
+            task.setData(ParamsKeyEnum.KEY_ALARM_ENABLE_2);
+        if (type == 2)
+            task.setData(ParamsKeyEnum.KEY_ALARM_ENABLE_3);
+        return task;
+    }
+
+    public static OrderTask getBuzzerEnable(int type) {
+        ParamsReadTask task = new ParamsReadTask();
+        if (type == 0)
+            task.setData(ParamsKeyEnum.KEY_BUZZER_ENABLE_1);
+        if (type == 1)
+            task.setData(ParamsKeyEnum.KEY_BUZZER_ENABLE_2);
+        if (type == 2)
+            task.setData(ParamsKeyEnum.KEY_BUZZER_ENABLE_3);
+        return task;
+    }
+
+    public static OrderTask getExitAlarmDuration(int type) {
+        ParamsReadTask task = new ParamsReadTask();
+        if (type == 0)
+            task.setData(ParamsKeyEnum.KEY_EXIT_ALARM_DURATION_1);
+        if (type == 1)
+            task.setData(ParamsKeyEnum.KEY_EXIT_ALARM_DURATION_2);
+        if (type == 2)
+            task.setData(ParamsKeyEnum.KEY_EXIT_ALARM_DURATION_3);
+        return task;
+    }
+
+    public static OrderTask getAlarmReportInterval(int type) {
+        ParamsReadTask task = new ParamsReadTask();
+        if (type == 0)
+            task.setData(ParamsKeyEnum.KEY_ALARM_REPORT_INTERVAL_1);
+        if (type == 1)
+            task.setData(ParamsKeyEnum.KEY_ALARM_REPORT_INTERVAL_2);
+        if (type == 2)
+            task.setData(ParamsKeyEnum.KEY_ALARM_REPORT_INTERVAL_3);
         return task;
     }
 
@@ -1137,6 +1189,12 @@ public class OrderTaskAssembler {
         return task;
     }
 
+    public static OrderTask getAlarmPayload() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_ALARM_PAYLOAD);
+        return task;
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////
     // WRITE
@@ -1183,9 +1241,25 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setIndicatorStatus(@IntRange(from = 0, to = 1023) int status) {
+    public static OrderTask setIndicatorStatus(@IntRange(from = 0, to = 1) int lowPowerStatus,
+                                               @IntRange(from = 0, to = 1) int bleAdvStatus,
+                                               @IntRange(from = 0, to = 1) int networkCheckStatus,
+                                               @IntRange(from = 0, to = 1) int alarmTriggered1Status,
+                                               @IntRange(from = 0, to = 1) int alarmType1Status,
+                                               @IntRange(from = 0, to = 1) int alarmTriggered2Status,
+                                               @IntRange(from = 0, to = 1) int alarmType2Status,
+                                               @IntRange(from = 0, to = 1) int alarmTriggered3Status,
+                                               @IntRange(from = 0, to = 1) int alarmType3Status) {
         ParamsWriteTask task = new ParamsWriteTask();
-        task.setIndicatorStatus(status);
+        task.setIndicatorStatus(lowPowerStatus,
+                bleAdvStatus,
+                networkCheckStatus,
+                alarmTriggered1Status,
+                alarmType1Status,
+                alarmTriggered2Status,
+                alarmType2Status,
+                alarmTriggered3Status,
+                alarmType3Status);
         return task;
     }
 
@@ -1202,21 +1276,21 @@ public class OrderTaskAssembler {
     }
 
 
-    public static OrderTask setShutdownInfoReport(@IntRange(from = 0, to = 1) int enable) {
+    public static OrderTask setShutdownPayloadEnable(@IntRange(from = 0, to = 1) int enable) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setShutdownInfoReport(enable);
         return task;
     }
 
-    public static OrderTask setOffByButton(@IntRange(from = 0, to = 1) int enable) {
+    public static OrderTask setOffByHall(@IntRange(from = 0, to = 1) int enable) {
         ParamsWriteTask task = new ParamsWriteTask();
-        task.setOffByButton(enable);
+        task.setOffByHall(enable);
         return task;
     }
 
-    public static OrderTask setAutoPowerOn(@IntRange(from = 0, to = 1) int enable) {
+    public static OrderTask setHallPowerOnMethod(@IntRange(from = 0, to = 1) int method) {
         ParamsWriteTask task = new ParamsWriteTask();
-        task.setAutoPowerOn(enable);
+        task.setHallPowerOnMethod(method);
         return task;
     }
 
@@ -1232,7 +1306,7 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setLowPowerPercent(@IntRange(from = 0, to = 5) int percent) {
+    public static OrderTask setLowPowerPercent(@IntRange(from = 30, to = 99) int percent) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setLowPowerPercent(percent);
         return task;
@@ -1977,9 +2051,33 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setDownLinkPosStrategy(@IntRange(from = 0, to = 3) int strategy) {
+//    public static OrderTask setDownLinkPosStrategy(@IntRange(from = 0, to = 3) int strategy) {
+//        ParamsWriteTask task = new ParamsWriteTask();
+//        task.setDownLinkPosStrategy(strategy);
+//        return task;
+//    }
+
+    public static OrderTask setAlarmEnable(@IntRange(from = 0, to = 1) int enable, @IntRange(from = 0, to = 1) int exitEnable, int type) {
         ParamsWriteTask task = new ParamsWriteTask();
-        task.setDownLinkPosStrategy(strategy);
+        task.setAlarmEnable(enable, exitEnable, type);
+        return task;
+    }
+
+    public static OrderTask setBuzzerEnable(@IntRange(from = 0, to = 2) int enable, int type) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setBuzzerEnable(enable, type);
+        return task;
+    }
+
+    public static OrderTask setExitAlarmDuration(@IntRange(from = 10, to = 15) int duration, int type) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setExitAlarmDuration(duration, type);
+        return task;
+    }
+
+    public static OrderTask setAlarmReportInterval(@IntRange(from = 1, to = 1440) int interval, int type) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setAlarmReportInterval(interval, type);
         return task;
     }
 
@@ -2220,6 +2318,12 @@ public class OrderTaskAssembler {
     public static OrderTask setGPSLimitPayload(@IntRange(from = 0, to = 1) int flag, @IntRange(from = 1, to = 4) int times) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setPayloadInfo(flag, times, ParamsKeyEnum.KEY_GPS_LIMIT_PAYLOAD.getParamsKey());
+        return task;
+    }
+
+    public static OrderTask seAlarmPayload(@IntRange(from = 0, to = 1) int flag, @IntRange(from = 1, to = 4) int times) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setPayloadInfo(flag, times, ParamsKeyEnum.KEY_ALARM_PAYLOAD.getParamsKey());
         return task;
     }
 

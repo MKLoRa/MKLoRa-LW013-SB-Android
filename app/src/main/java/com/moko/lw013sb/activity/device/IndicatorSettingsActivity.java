@@ -37,8 +37,6 @@ public class IndicatorSettingsActivity extends BaseActivity {
     private boolean mReceiverTag = false;
     private boolean savedParamsError;
 
-    private int mAlarmState;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +88,7 @@ public class IndicatorSettingsActivity extends BaseActivity {
                         if (value.length >= 5) {
                             int header = value[0] & 0xFF;// 0xED
                             int flag = value[1] & 0xFF;// read or write
-                                int cmd = MokoUtils.toInt(Arrays.copyOfRange(value, 2, 4));
+                            int cmd = MokoUtils.toInt(Arrays.copyOfRange(value, 2, 4));
                             if (header != 0xED)
                                 return;
                             ParamsKeyEnum configKeyEnum = ParamsKeyEnum.fromParamKey(cmd);
@@ -120,17 +118,15 @@ public class IndicatorSettingsActivity extends BaseActivity {
                                     case KEY_INDICATOR_STATUS:
                                         if (length > 0) {
                                             byte[] indicatorBytes = Arrays.copyOfRange(value, 5, 5 + length);
-                                            int indicator = MokoUtils.toInt(indicatorBytes);
-                                            mBind.cbDeviceState.setChecked((indicator & 1) == 1);
-                                            mAlarmState = indicator & 2;
-                                            mBind.cbFix.setChecked((indicator & 4) == 4);
-                                            mBind.cbFixSuccess.setChecked((indicator & 8) == 8);
-                                            mBind.cbFixFail.setChecked((indicator & 16) == 16);
-                                            mBind.cbNetworkCheck.setChecked((indicator & 32) == 32);
-                                            mBind.cbFullCharge.setChecked((indicator & 64) == 64);
-                                            mBind.cbCharging.setChecked((indicator & 128) == 128);
-                                            mBind.cbLowPower.setChecked((indicator & 256) == 256);
-                                            mBind.cbBleAdvCheck.setChecked((indicator & 512) == 512);
+                                            mBind.cbLowPower.setChecked(indicatorBytes[0] == 1);
+                                            mBind.cbBleAdvCheck.setChecked(indicatorBytes[1] == 1);
+                                            mBind.cbNetworkCheck.setChecked(indicatorBytes[2] == 1);
+                                            mBind.cbAlarmTriggered1.setChecked(indicatorBytes[3] == 1);
+                                            mBind.cbAlarmExit1.setChecked(indicatorBytes[4] == 1);
+                                            mBind.cbAlarmTriggered2.setChecked(indicatorBytes[5] == 1);
+                                            mBind.cbAlarmExit2.setChecked(indicatorBytes[6] == 1);
+                                            mBind.cbAlarmTriggered3.setChecked(indicatorBytes[7] == 1);
+                                            mBind.cbAlarmExit3.setChecked(indicatorBytes[8] == 1);
                                         }
                                         break;
                                 }
@@ -192,18 +188,17 @@ public class IndicatorSettingsActivity extends BaseActivity {
     public void onSave(View view) {
         if (isWindowLocked())
             return;
-        int indicator = (mBind.cbDeviceState.isChecked() ? 1 : 0)
-                | mAlarmState
-                | (mBind.cbFix.isChecked() ? 4 : 0)
-                | (mBind.cbFixSuccess.isChecked() ? 8 : 0)
-                | (mBind.cbFixFail.isChecked() ? 16 : 0)
-                | (mBind.cbNetworkCheck.isChecked() ? 32 : 0)
-                | (mBind.cbFullCharge.isChecked() ? 64 : 0)
-                | (mBind.cbCharging.isChecked() ? 128 : 0)
-                | (mBind.cbLowPower.isChecked() ? 256 : 0)
-                | (mBind.cbBleAdvCheck.isChecked() ? 512 : 0);
         savedParamsError = false;
         showSyncingProgressDialog();
-        LoRaLW013SBMokoSupport.getInstance().sendOrder(OrderTaskAssembler.setIndicatorStatus(indicator));
+        LoRaLW013SBMokoSupport.getInstance().sendOrder(OrderTaskAssembler.setIndicatorStatus(
+                mBind.cbLowPower.isChecked() ? 1 : 0,
+                mBind.cbBleAdvCheck.isChecked() ? 1 : 0,
+                mBind.cbNetworkCheck.isChecked() ? 1 : 0,
+                mBind.cbAlarmTriggered1.isChecked() ? 1 : 0,
+                mBind.cbAlarmExit1.isChecked() ? 1 : 0,
+                mBind.cbAlarmTriggered2.isChecked() ? 1 : 0,
+                mBind.cbAlarmExit2.isChecked() ? 1 : 0,
+                mBind.cbAlarmTriggered3.isChecked() ? 1 : 0,
+                mBind.cbAlarmExit3.isChecked() ? 1 : 0));
     }
 }

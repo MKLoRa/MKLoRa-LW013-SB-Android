@@ -76,84 +76,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="Device Information Payload Type"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvDeviceInfoPayloadType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:minWidth="105dp"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="Unconfirmed" />
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/lineDeviceInfoTimes"
-                    style="@style/lw013_divider_line"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone" />
-
-                <LinearLayout
-                    android:id="@+id/layoutDeviceInfoTimes"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Max Retransmission Times"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvDeviceInfoTimes"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="2" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/lw013_white_ffffff"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
                         android:text="Heartbeat Payload Type"
                         android:textColor="@color/lw013_black_333333"
                         android:textSize="15sp"
@@ -200,84 +122,6 @@
 
                     <TextView
                         android:id="@+id/tvHeartbeatTimes"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="2" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/lw013_white_ffffff"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Positioning Payload Type"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvPositioningPayloadType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:minWidth="105dp"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="Unconfirmed" />
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/linePosTimes"
-                    style="@style/lw013_divider_line"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone" />
-
-                <LinearLayout
-                    android:id="@+id/layoutPosTimes"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Max Retransmission Times"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvPositioningTimes"
                         android:layout_width="50dp"
                         android:layout_height="35dp"
                         android:background="@drawable/lw013_shape_radius_blue_btn_bg"
@@ -388,84 +232,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="Shock Payload Type"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvShockPayloadType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:minWidth="105dp"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="Unconfirmed" />
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/lineShockTimes"
-                    style="@style/lw013_divider_line"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone" />
-
-                <LinearLayout
-                    android:id="@+id/layoutShockTimes"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Max Retransmission Times"
-                        android:textColor="@color/lw013_black_333333"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvShockTimes"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-                        android:gravity="center"
-                        android:textColor="@color/lw013_white_ffffff"
-                        android:textSize="15sp"
-                        tools:text="2" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/lw013_white_ffffff"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
                         android:text="Event Payload Type"
                         android:textColor="@color/lw013_black_333333"
                         android:textSize="15sp"
@@ -544,13 +310,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="GPS Limit Payload Type"
+                        android:text="Alarm Payload Type"
                         android:textColor="@color/lw013_black_333333"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvGPSLimitPayloadType"
+                        android:id="@+id/tvAlarmPayloadType"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:background="@drawable/lw013_shape_radius_blue_btn_bg"
@@ -562,14 +328,14 @@
                 </LinearLayout>
 
                 <View
-                    android:id="@+id/lineGpsLimitTimes"
+                    android:id="@+id/lineAlarmTimes"
                     style="@style/lw013_divider_line"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:visibility="gone" />
 
                 <LinearLayout
-                    android:id="@+id/layoutGpsLimitTimes"
+                    android:id="@+id/layoutAlarmTimes"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -589,7 +355,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvGPSLimitTimes"
+                        android:id="@+id/tvAlarmTimes"
                         android:layout_width="50dp"
                         android:layout_height="35dp"
                         android:background="@drawable/lw013_shape_radius_blue_btn_bg"

@@ -43,6 +43,41 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:text="ON/Off Method"
+                android:textColor="@color/lw013_black_333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPowerOnMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/lw013_shape_radius_blue_btn_bg"
+                android:clickable="true"
+                android:gravity="center"
+                android:minWidth="70dp"
+                android:onClick="onPowerOnMethod"
+                android:padding="12dp"
+                android:tag="0"
+                android:text="Continuous approach"
+                android:textColor="@color/lw013_white_ffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View style="@style/lw013_divider_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -52,7 +87,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="Shut-Down Payload"
+                android:text="Shutdown Payload"
                 android:textColor="@color/lw013_black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -81,13 +116,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="OFF by Button"
+                android:text="OFF by Magnetic"
                 android:textColor="@color/lw013_black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ivOffByButton"
+                android:id="@+id/ivOffByHall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
@@ -125,45 +160,5 @@
                 android:paddingBottom="5dp"
                 android:src="@drawable/lw013_ic_unchecked" />
         </LinearLayout>
-
-        <View style="@style/lw013_divider_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Auto Power On"
-                android:textColor="@color/lw013_black_333333"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/ivAutoPowerOn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="5dp"
-                android:src="@drawable/lw013_ic_unchecked" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:lineSpacingMultiplier="1.2"
-            android:paddingEnd="10dp"
-            android:text="*When the battery run out, the device will be turned on when the device is in charged."
-            android:textColor="@color/lw013_grey_666666"
-            android:textSize="14sp" />
-
     </LinearLayout>
 </LinearLayout>

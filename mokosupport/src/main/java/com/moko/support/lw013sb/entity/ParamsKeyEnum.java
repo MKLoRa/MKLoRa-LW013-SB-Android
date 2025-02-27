@@ -29,8 +29,10 @@ public enum ParamsKeyEnum implements Serializable {
     KEY_HEARTBEAT_INTERVAL(0x0022),
     // 指示灯开关
     KEY_INDICATOR_STATUS(0x0023),
-    // 按键开关关机功能
-    KEY_OFF_BY_BUTTON(0x0025),
+    // 霍尔开关机方式
+    KEY_HALL_POWER_ON_METHOD(0x0024),
+    // 霍尔关机开关
+    KEY_OFF_BY_HALL(0x0025),
     // 关机信息上报
     KEY_SHUTDOWN_PAYLOAD_ENABLE(0x0026),
     // 蜂鸣器声效选择
@@ -53,10 +55,14 @@ public enum ParamsKeyEnum implements Serializable {
     //// 电池相关参数
     // 电池信息清除
     KEY_BATTERY_RESET(0x0100),
-    // 电池电量总消耗
+    // 读取当前周期电池电量消耗
+    KEY_BATTERY_INFO(0x0101),
+    // 读取上一周期电池电量消耗
+    KEY_BATTERY_INFO_LAST(0x0102),
+    // 读取所有周期电池电量消耗
     KEY_BATTERY_INFO_ALL(0x0103),
     // 低电百分比
-    KEY_LOW_POWER_PERCENT(0x0104),
+    KEY_LOW_POWER_PERCENT(0x0105),
     // 低电触发心跳开关
     KEY_LOW_POWER_PAYLOAD_ENABLE(0x0106),
     // 低电上报间隔
@@ -271,10 +277,35 @@ public enum ParamsKeyEnum implements Serializable {
     KEY_GPS_LIMIT_PAYLOAD(0x055B),
     //产品配置包上行配置
     KEY_CONFIG_PAYLOAD(0x055D),
+    // 报警信息包上行配置
+    KEY_ALARM_PAYLOAD(0x055E),
 
     //// 辅助功能参数
-    // 下行请求定位策略
-    KEY_DOWN_LINK_POS_STRATEGY(0x0600),
+    // 事件类型1开关
+    KEY_ALARM_ENABLE_1(0x0600),
+    // 事件类型1蜂鸣器开关
+    KEY_BUZZER_ENABLE_1(0x0601),
+    // 事件类型1蜂鸣器开关
+    KEY_EXIT_ALARM_DURATION_1(0x0602),
+    // 事件类型1蜂鸣器开关
+    KEY_ALARM_REPORT_INTERVAL_1(0x0603),
+    // 事件类型2开关
+    KEY_ALARM_ENABLE_2(0x0610),
+    // 事件类型2蜂鸣器开关
+    KEY_BUZZER_ENABLE_2(0x0611),
+    // 事件类型2蜂鸣器开关
+    KEY_EXIT_ALARM_DURATION_2(0x0612),
+    // 事件类型2蜂鸣器开关
+    KEY_ALARM_REPORT_INTERVAL_2(0x0613),
+    // 事件类型3开关
+    KEY_ALARM_ENABLE_3(0x0620),
+    // 事件类型3蜂鸣器开关
+    KEY_BUZZER_ENABLE_3(0x0621),
+    // 事件类型3蜂鸣器开关
+    KEY_EXIT_ALARM_DURATION_3(0x0622),
+    // 事件类型3蜂鸣器开关
+    KEY_ALARM_REPORT_INTERVAL_3(0x0623),
+
     // 震动检测使能
     KEY_SHOCK_DETECTION_ENABLE(0x0610),
     // 震动检测阈值
@@ -346,7 +377,6 @@ public enum ParamsKeyEnum implements Serializable {
     KEY_GPS_POS_TIMEOUT_L76C(0x0830),
     // GPS位置精度因子PDOP（L76版本）
     KEY_GPS_PDOP_LIMIT_L76C(0x0831),
-
 
 
     //// 定位参数

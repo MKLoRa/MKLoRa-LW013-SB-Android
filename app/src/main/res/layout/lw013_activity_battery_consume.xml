@@ -81,7 +81,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_axis_duration"
+                    android:id="@+id/tv_red_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -90,7 +90,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_ble_fix_duration"
+                    android:id="@+id/tv_green_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -99,7 +99,79 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_gps_fix_duration"
+                    android:id="@+id/tv_blue_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_normal_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_alarm_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_trigger_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_payload_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_trigger_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_payload_times"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_trigger_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_payload_times"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -219,7 +291,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_axis_duration_all"
+                    android:id="@+id/tv_red_duration_all"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -228,7 +300,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_ble_fix_duration_all"
+                    android:id="@+id/tv_green_duration_all"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -237,7 +309,79 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_gps_fix_duration_all"
+                    android:id="@+id/tv_blue_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_normal_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_alarm_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_trigger_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_payload_times_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_trigger_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_payload_times_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_trigger_duration_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_payload_times_all"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -309,7 +453,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_axis_duration_last"
+                    android:id="@+id/tv_red_duration_last"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -318,7 +462,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_ble_fix_duration_last"
+                    android:id="@+id/tv_green_duration_last"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
@@ -327,7 +471,79 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_gps_fix_duration_last"
+                    android:id="@+id/tv_blue_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_normal_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_buzzer_alarm_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_trigger_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_1_payload_times_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_trigger_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_2_payload_times_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_trigger_duration_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_event_3_payload_times_last"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"

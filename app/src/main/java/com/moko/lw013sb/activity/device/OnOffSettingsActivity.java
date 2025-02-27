@@ -18,6 +18,7 @@ import com.moko.lw013sb.R;
 import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityOnOffSettingsBinding;
 import com.moko.lw013sb.dialog.AlertMessageDialog;
+import com.moko.lw013sb.dialog.BottomDialog;
 import com.moko.lw013sb.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
@@ -36,8 +37,9 @@ public class OnOffSettingsActivity extends BaseActivity {
     private Lw013ActivityOnOffSettingsBinding mBind;
     private boolean mReceiverTag;
     private boolean shutdownPayloadOpen;
-    private boolean offByButtonOpen;
-    private boolean autoPowerOnOpen;
+    private boolean offByHallOpen;
+
+    private ArrayList<String> mValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +52,37 @@ public class OnOffSettingsActivity extends BaseActivity {
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
         mReceiverTag = true;
+        mValues = new ArrayList<>();
+        mValues.add("Continuous approach");
+        mValues.add("Multiple approaches");
         if (!LoRaLW013SBMokoSupport.getInstance().isBluetoothOpen()) {
             // 蓝牙未打开，开启蓝牙
             LoRaLW013SBMokoSupport.getInstance().enableBluetooth();
         } else {
             showSyncingProgressDialog();
-            List<OrderTask> orderTasks = new ArrayList<>(4);
+            List<OrderTask> orderTasks = new ArrayList<>(3);
+            orderTasks.add(OrderTaskAssembler.getHallPowerOnMethod());
             orderTasks.add(OrderTaskAssembler.getShutdownPayloadEnable());
-            orderTasks.add(OrderTaskAssembler.getOffByButtonEnable());
-            orderTasks.add(OrderTaskAssembler.getAutoPowerOn());
+            orderTasks.add(OrderTaskAssembler.getOffByHall());
             LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
         }
         setListener();
+    }
+
+    public void onPowerOnMethod(View view) {
+        int selected = (int) view.getTag();
+        BottomDialog dialog = new BottomDialog();
+        dialog.setDatas(mValues, selected);
+        dialog.setListener(value -> {
+            view.setTag(value);
+            mBind.tvPowerOnMethod.setText(mValues.get(value));
+            showSyncingProgressDialog();
+            List<OrderTask> orderTasks = new ArrayList<>(2);
+            orderTasks.add(OrderTaskAssembler.setHallPowerOnMethod(value));
+            orderTasks.add(OrderTaskAssembler.getHallPowerOnMethod());
+            LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
+        });
+        dialog.show(getSupportFragmentManager());
     }
 
     private void setListener() {
@@ -69,28 +90,18 @@ public class OnOffSettingsActivity extends BaseActivity {
             if (isWindowLocked()) return;
             showSyncingProgressDialog();
             List<OrderTask> orderTasks = new ArrayList<>(2);
-            orderTasks.add(OrderTaskAssembler.setShutdownInfoReport(shutdownPayloadOpen ? 0 : 1));
+            orderTasks.add(OrderTaskAssembler.setShutdownPayloadEnable(shutdownPayloadOpen ? 0 : 1));
             orderTasks.add(OrderTaskAssembler.getShutdownPayloadEnable());
             LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
         });
-        mBind.ivOffByButton.setOnClickListener(v -> {
+        mBind.ivOffByHall.setOnClickListener(v -> {
             if (isWindowLocked()) return;
             showSyncingProgressDialog();
             List<OrderTask> orderTasks = new ArrayList<>(2);
-            orderTasks.add(OrderTaskAssembler.setOffByButton(offByButtonOpen ? 0 : 1));
-            orderTasks.add(OrderTaskAssembler.getOffByButtonEnable());
+            orderTasks.add(OrderTaskAssembler.setOffByHall(offByHallOpen ? 0 : 1));
+            orderTasks.add(OrderTaskAssembler.getOffByHall());
             LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
         });
-
-        mBind.ivAutoPowerOn.setOnClickListener(v -> {
-            if (isWindowLocked()) return;
-            showSyncingProgressDialog();
-            List<OrderTask> orderTasks = new ArrayList<>(2);
-            orderTasks.add(OrderTaskAssembler.setAutoPowerOn(autoPowerOnOpen ? 0 : 1));
-            orderTasks.add(OrderTaskAssembler.getAutoPowerOn());
-            LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
-        });
-
         mBind.ivPowerOff.setOnClickListener(v -> {
             if (isWindowLocked()) return;
             AlertMessageDialog dialog = new AlertMessageDialog();
@@ -146,8 +157,9 @@ public class OnOffSettingsActivity extends BaseActivity {
                             int result = value[5] & 0xFF;
                             switch (configKeyEnum) {
                                 case KEY_SHUTDOWN_PAYLOAD_ENABLE:
-                                case KEY_OFF_BY_BUTTON:
-                                case KEY_AUTO_POWER_ON_ENABLE:
+                                case KEY_OFF_BY_HALL:
+                                case KEY_HALL_POWER_ON_METHOD:
+                                case KEY_CLOSE:
                                     if (result == 1) {
                                         ToastUtils.showToast(this, "Save Successfully！");
                                     } else {
@@ -159,6 +171,13 @@ public class OnOffSettingsActivity extends BaseActivity {
                         if (flag == 0x00) {
                             // read
                             switch (configKeyEnum) {
+                                case KEY_HALL_POWER_ON_METHOD:
+                                    if (length == 1) {
+                                        int method = value[5] & 0xFF;
+                                        mBind.tvPowerOnMethod.setTag(method);
+                                        mBind.tvPowerOnMethod.setText(mValues.get(method));
+                                    }
+                                    break;
                                 case KEY_SHUTDOWN_PAYLOAD_ENABLE:
                                     if (length == 1) {
                                         int enable = value[5] & 0xFF;
@@ -166,18 +185,11 @@ public class OnOffSettingsActivity extends BaseActivity {
                                         mBind.ivShutdownPayload.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
                                     }
                                     break;
-                                case KEY_OFF_BY_BUTTON:
+                                case KEY_OFF_BY_HALL:
                                     if (length == 1) {
                                         int enable = value[5] & 0xFF;
-                                        offByButtonOpen = enable == 1;
-                                        mBind.ivOffByButton.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
-                                    }
-                                    break;
-                                case KEY_AUTO_POWER_ON_ENABLE:
-                                    if (length == 1) {
-                                        int enable = value[5] & 0xFF;
-                                        autoPowerOnOpen = enable == 1;
-                                        mBind.ivAutoPowerOn.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
+                                        offByHallOpen = enable == 1;
+                                        mBind.ivOffByHall.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
                                     }
                                     break;
                             }
@@ -218,4 +230,5 @@ public class OnOffSettingsActivity extends BaseActivity {
     public void onBack(View view) {
         finish();
     }
+
 }

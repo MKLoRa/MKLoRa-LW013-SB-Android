@@ -40,15 +40,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.moko.lw013sb.activity.pos.PosBleFixActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="com.moko.lw013sb.activity.pos.PosGpsL76CFixActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="com.moko.lw013sb.activity.general.DeviceModeActivity"
+            android:name="com.moko.lw013sb.activity.general.AlarmReportActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -160,11 +152,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.moko.lw013sb.activity.pos.PosGpsLR1110FixActivity"
-            android:hardwareAccelerated="true"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name="com.moko.lw013sb.activity.general.ShockDetectionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
@@ -197,10 +184,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.moko.lw013sb.activity.pos.PosBleAndGpsActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name="com.moko.lw013sb.activity.general.StandbyModeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
@@ -222,6 +205,10 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.moko.lw013sb.activity.general.TimeSegmentedModeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.moko.lw013sb.activity.general.AlarmTypeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 

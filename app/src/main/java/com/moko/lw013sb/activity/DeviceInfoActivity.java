@@ -24,22 +24,16 @@ import com.moko.lw013sb.R;
 import com.moko.lw013sb.activity.device.IndicatorSettingsActivity;
 import com.moko.lw013sb.activity.device.OnOffSettingsActivity;
 import com.moko.lw013sb.activity.device.SystemInfoActivity;
+import com.moko.lw013sb.activity.general.BleSettingsActivity;
+import com.moko.lw013sb.activity.general.AlarmReportActivity;
 import com.moko.lw013sb.activity.lora.LoRaAppSettingActivity;
 import com.moko.lw013sb.activity.lora.LoRaConnSettingActivity;
-import com.moko.lw013sb.activity.pos.PosBleAndGpsActivity;
-import com.moko.lw013sb.activity.pos.PosBleFixActivity;
-import com.moko.lw013sb.activity.pos.PosGpsL76CFixActivity;
-import com.moko.lw013sb.activity.general.AuxiliaryOperationActivity;
-import com.moko.lw013sb.activity.general.AxisSettingActivity;
-import com.moko.lw013sb.activity.general.BleSettingsActivity;
-import com.moko.lw013sb.activity.general.DeviceModeActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityDeviceInfoBinding;
 import com.moko.lw013sb.dialog.AlertMessageDialog;
 import com.moko.lw013sb.dialog.ChangePasswordDialog;
 import com.moko.lw013sb.fragment.DeviceFragment;
 import com.moko.lw013sb.fragment.GeneralFragment;
 import com.moko.lw013sb.fragment.LoRaFragment;
-import com.moko.lw013sb.fragment.PositionFragment;
 import com.moko.lw013sb.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
@@ -63,7 +57,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
     private Lw013ActivityDeviceInfoBinding mBind;
     private FragmentManager fragmentManager;
     private LoRaFragment loraFragment;
-    private PositionFragment posFragment;
     private GeneralFragment generalFragment;
     private DeviceFragment deviceFragment;
     private ArrayList<String> mUploadMode;
@@ -125,16 +118,13 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
 
     private void initFragment() {
         loraFragment = LoRaFragment.newInstance();
-        posFragment = PositionFragment.newInstance();
         generalFragment = GeneralFragment.newInstance();
         deviceFragment = DeviceFragment.newInstance();
         fragmentManager.beginTransaction()
                 .add(R.id.frame_container, loraFragment)
-                .add(R.id.frame_container, posFragment)
                 .add(R.id.frame_container, generalFragment)
                 .add(R.id.frame_container, deviceFragment)
                 .show(loraFragment)
-                .hide(posFragment)
                 .hide(generalFragment)
                 .hide(deviceFragment)
                 .commit();
@@ -228,15 +218,12 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
                                         break;
                                     case KEY_TIME_ZONE:
                                     case KEY_LOW_POWER_PERCENT:
-                                    case KEY_BUZZER_SOUND_CHOOSE:
                                     case KEY_LOW_POWER_PAYLOAD_ENABLE:
                                         if (result != 1) {
                                             savedParamsError = true;
                                         }
                                         break;
                                     case KEY_HEARTBEAT_INTERVAL:
-                                    case KEY_GPS_EXTREME_MODE_L76C:
-                                    case KEY_VOLTAGE_REPORT_ENABLE:
                                     case KEY_LOW_POWER_REPORT_INTERVAL:
                                         if (result != 1) {
                                             savedParamsError = true;
@@ -274,18 +261,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
                                             loraFragment.setLoraStatus(networkStatus);
                                         }
                                         break;
-                                    case KEY_GPS_EXTREME_MODE_L76C:
-                                        if (length > 0) {
-                                            int enable = value[5] & 0xFF;
-                                            posFragment.setExtremeModeEnable(enable);
-                                        }
-                                        break;
-                                    case KEY_VOLTAGE_REPORT_ENABLE:
-                                        if (length > 0) {
-                                            int enable = value[5] & 0xFF;
-                                            posFragment.setVoltageReportEnable(enable);
-                                        }
-                                        break;
                                     case KEY_HEARTBEAT_INTERVAL:
                                         if (length > 0) {
                                             byte[] intervalBytes = Arrays.copyOfRange(value, 5, 5 + length);
@@ -314,12 +289,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
                                         if (length > 0) {
                                             int lowPower = value[5] & 0xFF;
                                             deviceFragment.setLowPower(lowPower);
-                                        }
-                                        break;
-
-                                    case KEY_BUZZER_SOUND_CHOOSE:
-                                        if (length == 1) {
-                                            deviceFragment.setBuzzerSound(value[5] & 0xff);
                                         }
                                         break;
                                 }
@@ -530,8 +499,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         if (checkedId == R.id.radioBtn_lora) {
             showLoRaAndGetData();
-        } else if (checkedId == R.id.radioBtn_position) {
-            showPosAndGetData();
         } else if (checkedId == R.id.radioBtn_general) {
             showGeneralAndGetData();
         } else if (checkedId == R.id.radioBtn_device) {
@@ -544,7 +511,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         mBind.ivSave.setVisibility(View.VISIBLE);
         fragmentManager.beginTransaction()
                 .hide(loraFragment)
-                .hide(posFragment)
                 .hide(generalFragment)
                 .show(deviceFragment)
                 .commit();
@@ -554,7 +520,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         orderTasks.add(OrderTaskAssembler.getTimeZone());
         orderTasks.add(OrderTaskAssembler.getLowPowerPercent());
         orderTasks.add(OrderTaskAssembler.getLowPowerPayloadEnable());
-        orderTasks.add(OrderTaskAssembler.getBuzzerSoundChoose());
         orderTasks.add(OrderTaskAssembler.getLowPowerReportInterval());
         LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
     }
@@ -564,7 +529,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         mBind.ivSave.setVisibility(View.VISIBLE);
         fragmentManager.beginTransaction()
                 .hide(loraFragment)
-                .hide(posFragment)
                 .show(generalFragment)
                 .hide(deviceFragment)
                 .commit();
@@ -572,28 +536,11 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         LoRaLW013SBMokoSupport.getInstance().sendOrder(OrderTaskAssembler.getHeartBeatInterval());
     }
 
-    private void showPosAndGetData() {
-        mBind.tvTitle.setText("Positioning Strategy");
-        mBind.ivSave.setVisibility(View.GONE);
-        fragmentManager.beginTransaction()
-                .hide(loraFragment)
-                .show(posFragment)
-                .hide(generalFragment)
-                .hide(deviceFragment)
-                .commit();
-        showSyncingProgressDialog();
-        List<OrderTask> orderTasks = new ArrayList<>();
-        orderTasks.add(OrderTaskAssembler.getGPSExtremeModeL76());
-        orderTasks.add(OrderTaskAssembler.getVoltageReportEnable());
-        LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
-    }
-
     private void showLoRaAndGetData() {
         mBind.tvTitle.setText(R.string.title_lora_lw013);
         mBind.ivSave.setVisibility(View.GONE);
         fragmentManager.beginTransaction()
                 .show(loraFragment)
-                .hide(posFragment)
                 .hide(generalFragment)
                 .hide(deviceFragment)
                 .commit();
@@ -639,71 +586,18 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         startActivity(intent);
     }
 
-//    public void onWifiFix(View view) {
-//        if (isWindowLocked())
-//            return;
-//        Intent intent = new Intent(this, PosWifiFixActivity.class);
-//        startActivity(intent);
-//    }
-
-    public void onBleFix(View view) {
+    public void onAlarmReport(View view) {
         if (isWindowLocked())
             return;
-        Intent intent = new Intent(this, PosBleFixActivity.class);
+        Intent intent = new Intent(this, AlarmReportActivity.class);
         startActivity(intent);
     }
 
-    public void onGPSFix(View view) {
-        if (isWindowLocked())
-            return;
-        Intent intent = new Intent(this, PosGpsL76CFixActivity.class);
-        startActivity(intent);
-    }
-
-    public void onBleAndGPS(View view) {
-        if (isWindowLocked())
-            return;
-        Intent intent = new Intent(this, PosBleAndGpsActivity.class);
-        startActivity(intent);
-    }
-
-    public void onExtremeMode(View view) {
-        if (isWindowLocked())
-            return;
-        posFragment.changeExtremeMode();
-    }
-
-    public void onVoltageReport(View view) {
-        if (isWindowLocked())
-            return;
-        posFragment.changeVoltageReport();
-    }
-
-    public void onDeviceMode(View view) {
-        if (isWindowLocked())
-            return;
-        Intent intent = new Intent(this, DeviceModeActivity.class);
-        startActivity(intent);
-    }
-
-    public void onAuxiliaryInterval(View view) {
-        if (isWindowLocked())
-            return;
-        Intent intent = new Intent(this, AuxiliaryOperationActivity.class);
-        startActivity(intent);
-    }
 
     public void onBleSettings(View view) {
         if (isWindowLocked())
             return;
         Intent intent = new Intent(this, BleSettingsActivity.class);
-        startActivity(intent);
-    }
-
-    public void onAxisSettings(View view) {
-        if (isWindowLocked())
-            return;
-        Intent intent = new Intent(this, AxisSettingActivity.class);
         startActivity(intent);
     }
 
@@ -717,17 +611,6 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         if (isWindowLocked())
             return;
         deviceFragment.showTimeZoneDialog();
-    }
-
-    public void onBuzzer(View view) {
-        if (isWindowLocked()) return;
-        deviceFragment.showBuzzerDialog();
-    }
-
-    public void selectLowPowerPrompt(View view) {
-        if (isWindowLocked())
-            return;
-        deviceFragment.showLowPowerDialog();
     }
 
     public void onOffSetting(View view) {
@@ -755,18 +638,4 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         });
         dialog.show(getSupportFragmentManager());
     }
-
-//    public void onPowerOff(View view) {
-//        if (isWindowLocked())
-//            return;
-//        AlertMessageDialog dialog = new AlertMessageDialog();
-//        dialog.setTitle("Warning!");
-//        dialog.setMessage("Are you sure to turn off the device? Please make sure the device has a button to turn on!");
-//        dialog.setConfirm("OK");
-//        dialog.setOnAlertConfirmListener(() -> {
-//            showSyncingProgressDialog();
-//            LoRaLW013SBMokoSupport.getInstance().sendOrder(OrderTaskAssembler.close());
-//        });
-//        dialog.show(getSupportFragmentManager());
-//    }
 }

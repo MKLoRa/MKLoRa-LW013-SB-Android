@@ -42,12 +42,9 @@ public class MessageTypeSettingsActivity extends BaseActivity {
     private final ArrayList<String> payloadTypes = new ArrayList<>(4);
     private final ArrayList<String> retransmissionTimes = new ArrayList<>(8);
     private int heartbeatFlag;
-    private int positioningFlag;
     private int lowPowerFlag;
-    private int shockFlag;
-    private int deviceInfoFlag;
     private int eventFlag;
-    private int gpsLimitFlag;
+    private int alarmFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +60,10 @@ public class MessageTypeSettingsActivity extends BaseActivity {
         showSyncingProgressDialog();
         mBind.tvTitle.postDelayed(() -> {
             List<OrderTask> orderTasks = new ArrayList<>(8);
-            orderTasks.add(OrderTaskAssembler.getDeviceInfoPayload());
             orderTasks.add(OrderTaskAssembler.getHeartbeatPayload());
-            orderTasks.add(OrderTaskAssembler.getPositioningPayload());
             orderTasks.add(OrderTaskAssembler.getLowPowerPayload());
-            orderTasks.add(OrderTaskAssembler.getShockPayload());
             orderTasks.add(OrderTaskAssembler.getEventPayload());
-            orderTasks.add(OrderTaskAssembler.getGPSLimitPayload());
+            orderTasks.add(OrderTaskAssembler.getAlarmPayload());
             LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
         }, 300);
         payloadTypes.add(unconfirmed);
@@ -86,29 +80,19 @@ public class MessageTypeSettingsActivity extends BaseActivity {
             int index = unconfirmed.equals(mBind.tvHeartbeatPayloadType.getText().toString().trim()) ? 0 : 1;
             showBottomDialog(payloadTypes, index, mBind.tvHeartbeatPayloadType, 1);
         });
-        mBind.tvPositioningPayloadType.setOnClickListener(v -> {
-            int index = unconfirmed.equals(mBind.tvPositioningPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvPositioningPayloadType, 2);
-        });
+
         mBind.tvLowPowerPayloadType.setOnClickListener(v -> {
             int index = unconfirmed.equals(mBind.tvLowPowerPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvLowPowerPayloadType, 3);
+            showBottomDialog(payloadTypes, index, mBind.tvLowPowerPayloadType, 2);
         });
-        mBind.tvShockPayloadType.setOnClickListener(v -> {
-            int index = unconfirmed.equals(mBind.tvShockPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvShockPayloadType, 4);
-        });
-        mBind.tvDeviceInfoPayloadType.setOnClickListener(v -> {
-            int index = unconfirmed.equals(mBind.tvDeviceInfoPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvDeviceInfoPayloadType, 5);
-        });
+
         mBind.tvEventPayloadType.setOnClickListener(v -> {
             int index = unconfirmed.equals(mBind.tvEventPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvEventPayloadType, 6);
+            showBottomDialog(payloadTypes, index, mBind.tvEventPayloadType, 3);
         });
-        mBind.tvGPSLimitPayloadType.setOnClickListener(v -> {
-            int index = unconfirmed.equals(mBind.tvGPSLimitPayloadType.getText().toString().trim()) ? 0 : 1;
-            showBottomDialog(payloadTypes, index, mBind.tvGPSLimitPayloadType, 7);
+        mBind.tvAlarmPayloadType.setOnClickListener(v -> {
+            int index = unconfirmed.equals(mBind.tvAlarmPayloadType.getText().toString().trim()) ? 0 : 1;
+            showBottomDialog(payloadTypes, index, mBind.tvAlarmPayloadType, 4);
         });
 
 
@@ -116,29 +100,17 @@ public class MessageTypeSettingsActivity extends BaseActivity {
             int index = Integer.parseInt(mBind.tvHeartbeatTimes.getText().toString().trim());
             showBottomDialog(retransmissionTimes, index, mBind.tvHeartbeatTimes, 0);
         });
-        mBind.tvPositioningTimes.setOnClickListener(v -> {
-            int index = Integer.parseInt(mBind.tvPositioningTimes.getText().toString().trim());
-            showBottomDialog(retransmissionTimes, index, mBind.tvPositioningTimes, 0);
-        });
         mBind.tvLowPowerTimes.setOnClickListener(v -> {
             int index = Integer.parseInt(mBind.tvLowPowerTimes.getText().toString().trim());
             showBottomDialog(retransmissionTimes, index, mBind.tvLowPowerTimes, 0);
-        });
-        mBind.tvShockTimes.setOnClickListener(v -> {
-            int index = Integer.parseInt(mBind.tvShockTimes.getText().toString().trim());
-            showBottomDialog(retransmissionTimes, index, mBind.tvShockTimes, 0);
-        });
-        mBind.tvDeviceInfoTimes.setOnClickListener(v -> {
-            int index = Integer.parseInt(mBind.tvDeviceInfoTimes.getText().toString().trim());
-            showBottomDialog(retransmissionTimes, index, mBind.tvDeviceInfoTimes, 0);
         });
         mBind.tvEventTimes.setOnClickListener(v -> {
             int index = Integer.parseInt(mBind.tvEventTimes.getText().toString().trim());
             showBottomDialog(retransmissionTimes, index, mBind.tvEventTimes, 0);
         });
-        mBind.tvGPSLimitTimes.setOnClickListener(v -> {
-            int index = Integer.parseInt(mBind.tvGPSLimitTimes.getText().toString().trim());
-            showBottomDialog(retransmissionTimes, index, mBind.tvGPSLimitTimes, 0);
+        mBind.tvAlarmTimes.setOnClickListener(v -> {
+            int index = Integer.parseInt(mBind.tvAlarmTimes.getText().toString().trim());
+            showBottomDialog(retransmissionTimes, index, mBind.tvAlarmTimes, 0);
         });
     }
 
@@ -186,15 +158,6 @@ public class MessageTypeSettingsActivity extends BaseActivity {
                                         setMaxTimes(enable, mBind.lineHeartbeatTime, mBind.layoutHeartbeatTime);
                                     }
                                     break;
-                                case KEY_POSITIONING_PAYLOAD:
-                                    if (length == 2) {
-                                        int enable = value[5] & 0xff;
-                                        int times = (value[6] & 0xff) - 1;
-                                        mBind.tvPositioningPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
-                                        mBind.tvPositioningTimes.setText(String.valueOf(times));
-                                        setMaxTimes(enable, mBind.linePosTimes, mBind.layoutPosTimes);
-                                    }
-                                    break;
                                 case KEY_LOW_POWER_PAYLOAD:
                                     if (length == 2) {
                                         int enable = value[5] & 0xff;
@@ -202,24 +165,6 @@ public class MessageTypeSettingsActivity extends BaseActivity {
                                         mBind.tvLowPowerPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
                                         mBind.tvLowPowerTimes.setText(String.valueOf(times));
                                         setMaxTimes(enable, mBind.lineLowPowerTime, mBind.layoutLowPowerTime);
-                                    }
-                                    break;
-                                case KEY_SHOCK_PAYLOAD:
-                                    if (length == 2) {
-                                        int enable = value[5] & 0xff;
-                                        int times = (value[6] & 0xff) - 1;
-                                        mBind.tvShockPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
-                                        mBind.tvShockTimes.setText(String.valueOf(times));
-                                        setMaxTimes(enable, mBind.lineShockTimes, mBind.layoutShockTimes);
-                                    }
-                                    break;
-                                case KEY_DEVICE_INFO_PAYLOAD:
-                                    if (length == 2) {
-                                        int enable = value[5] & 0xff;
-                                        int times = (value[6] & 0xff) - 1;
-                                        mBind.tvDeviceInfoPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
-                                        mBind.tvDeviceInfoTimes.setText(String.valueOf(times));
-                                        setMaxTimes(enable, mBind.lineDeviceInfoTimes, mBind.layoutDeviceInfoTimes);
                                     }
                                     break;
                                 case KEY_EVENT_PAYLOAD:
@@ -231,13 +176,13 @@ public class MessageTypeSettingsActivity extends BaseActivity {
                                         setMaxTimes(enable, mBind.lineEventTimes, mBind.layoutEventTimes);
                                     }
                                     break;
-                                case KEY_GPS_LIMIT_PAYLOAD:
+                                case KEY_ALARM_PAYLOAD:
                                     if (length == 2) {
                                         int enable = value[5] & 0xff;
                                         int times = (value[6] & 0xff) - 1;
-                                        mBind.tvGPSLimitPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
-                                        mBind.tvGPSLimitTimes.setText(String.valueOf(times));
-                                        setMaxTimes(enable, mBind.lineGpsLimitTimes, mBind.layoutGpsLimitTimes);
+                                        mBind.tvAlarmPayloadType.setText(enable == 1 ? confirmed : unconfirmed);
+                                        mBind.tvAlarmTimes.setText(String.valueOf(times));
+                                        setMaxTimes(enable, mBind.lineAlarmTimes, mBind.layoutAlarmTimes);
                                     }
                                     break;
                             }
@@ -246,25 +191,15 @@ public class MessageTypeSettingsActivity extends BaseActivity {
                                 case KEY_HEARTBEAT_PAYLOAD:
                                     heartbeatFlag = value[5] & 0xff;
                                     break;
-                                case KEY_POSITIONING_PAYLOAD:
-                                    positioningFlag = value[5] & 0xff;
-                                    break;
                                 case KEY_LOW_POWER_PAYLOAD:
                                     lowPowerFlag = value[5] & 0xff;
-                                    break;
-                                case KEY_SHOCK_PAYLOAD:
-                                    shockFlag = value[5] & 0xff;
-                                    break;
-                                case KEY_DEVICE_INFO_PAYLOAD:
-                                    deviceInfoFlag = value[5] & 0xff;
                                     break;
                                 case KEY_EVENT_PAYLOAD:
                                     eventFlag = value[5] & 0xff;
                                     break;
-                                case KEY_GPS_LIMIT_PAYLOAD:
-                                    gpsLimitFlag = value[5] & 0xff;
-                                    if (heartbeatFlag == 1 && lowPowerFlag == 1 && eventFlag == 1 && deviceInfoFlag == 1
-                                            && shockFlag == 1 && gpsLimitFlag == 1 && positioningFlag == 1) {
+                                case KEY_ALARM_PAYLOAD:
+                                    alarmFlag = value[5] & 0xff;
+                                    if (heartbeatFlag == 1 && lowPowerFlag == 1 && eventFlag == 1 && alarmFlag == 1) {
                                         ToastUtils.showToast(this, "Save Successfully！");
                                     } else {
                                         ToastUtils.showToast(this, "Opps！Save failed. Please check the input characters and try again.");
@@ -293,17 +228,11 @@ public class MessageTypeSettingsActivity extends BaseActivity {
             if (type == 1) {
                 setMaxTimes(value, mBind.lineHeartbeatTime, mBind.layoutHeartbeatTime);
             } else if (type == 2) {
-                setMaxTimes(value, mBind.linePosTimes, mBind.layoutPosTimes);
-            } else if (type == 3) {
                 setMaxTimes(value, mBind.lineLowPowerTime, mBind.layoutLowPowerTime);
-            } else if (type == 4) {
-                setMaxTimes(value, mBind.lineShockTimes, mBind.layoutShockTimes);
-            } else if (type == 5) {
-                setMaxTimes(value, mBind.lineDeviceInfoTimes, mBind.layoutDeviceInfoTimes);
-            } else if (type == 6) {
+            } else if (type == 3) {
                 setMaxTimes(value, mBind.lineEventTimes, mBind.layoutEventTimes);
-            } else if (type == 7) {
-                setMaxTimes(value, mBind.lineGpsLimitTimes, mBind.layoutGpsLimitTimes);
+            } else if (type == 4) {
+                setMaxTimes(value, mBind.lineAlarmTimes, mBind.layoutAlarmTimes);
             }
         });
         dialog.show(getSupportFragmentManager());
@@ -315,34 +244,24 @@ public class MessageTypeSettingsActivity extends BaseActivity {
 
     public void onSave(View view) {
         showSyncingProgressDialog();
-        shockFlag = 0;
         heartbeatFlag = 0;
         lowPowerFlag = 0;
         eventFlag = 0;
-        gpsLimitFlag = 0;
-        positioningFlag = 0;
+        alarmFlag = 0;
         int heartbeatPayloadType = confirmed.equals(mBind.tvHeartbeatPayloadType.getText().toString().trim()) ? 1 : 0;
         int heartbeatTime = Integer.parseInt(mBind.tvHeartbeatTimes.getText().toString().trim()) + 1;
-        int positioningPayloadType = confirmed.equals(mBind.tvPositioningPayloadType.getText().toString().trim()) ? 1 : 0;
-        int positioningTime = Integer.parseInt(mBind.tvPositioningTimes.getText().toString().trim()) + 1;
+
         int lowPowerPayloadType = confirmed.equals(mBind.tvLowPowerPayloadType.getText().toString().trim()) ? 1 : 0;
         int lowPowerTime = Integer.parseInt(mBind.tvLowPowerTimes.getText().toString().trim()) + 1;
-        int shockPayloadType = confirmed.equals(mBind.tvShockPayloadType.getText().toString().trim()) ? 1 : 0;
-        int shockTime = Integer.parseInt(mBind.tvShockTimes.getText().toString().trim()) + 1;
-        int deviceInfoPayloadType = confirmed.equals(mBind.tvDeviceInfoPayloadType.getText().toString().trim()) ? 1 : 0;
-        int deviceInfoTime = Integer.parseInt(mBind.tvDeviceInfoTimes.getText().toString().trim()) + 1;
         int eventPayloadType = confirmed.equals(mBind.tvEventPayloadType.getText().toString().trim()) ? 1 : 0;
         int eventTime = Integer.parseInt(mBind.tvEventTimes.getText().toString().trim()) + 1;
-        int gpsLimitPayloadType = confirmed.equals(mBind.tvGPSLimitPayloadType.getText().toString().trim()) ? 1 : 0;
-        int gpsLimitTime = Integer.parseInt(mBind.tvGPSLimitTimes.getText().toString().trim()) + 1;
-        List<OrderTask> orderTasks = new ArrayList<>(8);
+        int alarmPayloadType = confirmed.equals(mBind.tvAlarmPayloadType.getText().toString().trim()) ? 1 : 0;
+        int alarmTime = Integer.parseInt(mBind.tvAlarmTimes.getText().toString().trim()) + 1;
+        List<OrderTask> orderTasks = new ArrayList<>(4);
         orderTasks.add(OrderTaskAssembler.setHeartbeatPayload(heartbeatPayloadType, heartbeatTime));
         orderTasks.add(OrderTaskAssembler.setLowPowerPayload(lowPowerPayloadType, lowPowerTime));
-        orderTasks.add(OrderTaskAssembler.setPositioningPayload(positioningPayloadType, positioningTime));
-        orderTasks.add(OrderTaskAssembler.setShockPayload(shockPayloadType, shockTime));
-        orderTasks.add(OrderTaskAssembler.setDeviceInfoPayload(deviceInfoPayloadType, deviceInfoTime));
         orderTasks.add(OrderTaskAssembler.setEventPayload(eventPayloadType, eventTime));
-        orderTasks.add(OrderTaskAssembler.setGPSLimitPayload(gpsLimitPayloadType, gpsLimitTime));
+        orderTasks.add(OrderTaskAssembler.seAlarmPayload(alarmPayloadType, alarmTime));
         LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
     }
 

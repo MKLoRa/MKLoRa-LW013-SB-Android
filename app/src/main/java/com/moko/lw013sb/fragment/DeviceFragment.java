@@ -24,11 +24,6 @@ public class DeviceFragment extends Fragment {
     private ArrayList<String> mTimeZones;
     private int mSelectedTimeZone;
 
-    private final ArrayList<String> mLowPowerPrompts = new ArrayList<>(8);
-    private int mSelectedLowPowerPrompt;
-    private final ArrayList<String> buzzerSounds = new ArrayList<>(4);
-    private int buzzerSoundSelected;
-
     private DeviceInfoActivity activity;
 
     public DeviceFragment() {
@@ -64,16 +59,6 @@ public class DeviceFragment extends Fragment {
                 }
             }
         }
-        mLowPowerPrompts.add("10%");
-        mLowPowerPrompts.add("20%");
-        mLowPowerPrompts.add("30%");
-        mLowPowerPrompts.add("40%");
-        mLowPowerPrompts.add("50%");
-        mLowPowerPrompts.add("60%");
-
-        buzzerSounds.add("No");
-        buzzerSounds.add("Alarm");
-        buzzerSounds.add("Normal");
         return mBind.getRoot();
     }
 
@@ -92,36 +77,6 @@ public class DeviceFragment extends Fragment {
         dialog.show(activity.getSupportFragmentManager());
     }
 
-    public void showLowPowerDialog() {
-        BottomDialog dialog = new BottomDialog();
-        dialog.setDatas(mLowPowerPrompts, mSelectedLowPowerPrompt);
-        dialog.setListener(value -> {
-            mSelectedLowPowerPrompt = value;
-            mBind.tvLowPowerPrompt.setText(mLowPowerPrompts.get(value));
-//            activity.showSyncingProgressDialog();
-//            ArrayList<OrderTask> orderTasks = new ArrayList<>();
-//            orderTasks.add(OrderTaskAssembler.setLowPowerPercent(value));
-//            orderTasks.add(OrderTaskAssembler.getLowPowerPercent());
-//            LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
-        });
-        dialog.show(activity.getSupportFragmentManager());
-    }
-
-    public void showBuzzerDialog() {
-        BottomDialog dialog = new BottomDialog();
-        dialog.setDatas(buzzerSounds, buzzerSoundSelected);
-        dialog.setListener(value -> {
-            buzzerSoundSelected = value;
-            mBind.tvBuzzer.setText(buzzerSounds.get(value));
-//            activity.showSyncingProgressDialog();
-//            ArrayList<OrderTask> orderTasks = new ArrayList<>();
-//            orderTasks.add(OrderTaskAssembler.setBuzzerSound(value));
-//            orderTasks.add(OrderTaskAssembler.getBuzzerSoundChoose());
-//            LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
-        });
-        dialog.show(activity.getSupportFragmentManager());
-    }
-
     public void setLowPowerReportInterval(int interval) {
         mBind.etLowPowerReportInterval.setText(String.valueOf(interval));
     }
@@ -132,13 +87,7 @@ public class DeviceFragment extends Fragment {
     }
 
     public void setLowPower(int lowPower) {
-        mSelectedLowPowerPrompt = lowPower;
-        mBind.tvLowPowerPrompt.setText(mLowPowerPrompts.get(mSelectedLowPowerPrompt));
-    }
-
-    public void setBuzzerSound(int buzzerSound) {
-        buzzerSoundSelected = buzzerSound;
-        mBind.tvBuzzer.setText(buzzerSounds.get(buzzerSound));
+        mBind.etLowPowerPrompt.setText(String.valueOf(lowPower));
     }
 
     public boolean isValid() {
@@ -149,17 +98,25 @@ public class DeviceFragment extends Fragment {
         if (interval < 1 || interval > 255) {
             return false;
         }
+        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
+        if (TextUtils.isEmpty(promptStr))
+            return false;
+        final int prompt = Integer.parseInt(promptStr);
+        if (prompt < 30 || prompt > 99) {
+            return false;
+        }
         return true;
     }
 
     public void saveParams() {
         final String intervalStr = mBind.etLowPowerReportInterval.getText().toString();
         final int interval = Integer.parseInt(intervalStr);
+        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
+        final int prompt = Integer.parseInt(promptStr);
         ArrayList<OrderTask> orderTasks = new ArrayList<>();
-        orderTasks.add(OrderTaskAssembler.setBuzzerSound(buzzerSoundSelected));
         orderTasks.add(OrderTaskAssembler.setTimeZone(mSelectedTimeZone - 24));
         orderTasks.add(OrderTaskAssembler.setLowPowerPayloadEnable(mBind.cbLowPowerPayload.isChecked() ? 1 : 0));
-        orderTasks.add(OrderTaskAssembler.setLowPowerPercent(mSelectedLowPowerPrompt));
+        orderTasks.add(OrderTaskAssembler.setLowPowerPercent(prompt));
         orderTasks.add(OrderTaskAssembler.setLowPowerReportInterval(interval));
         LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
     }

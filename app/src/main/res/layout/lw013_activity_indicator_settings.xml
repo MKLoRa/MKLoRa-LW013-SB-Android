@@ -58,107 +58,21 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <CheckBox
+                android:id="@+id/cb_low_power"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/lw013_white_ffffff"
-                android:padding="10dp">
-
-                <CheckBox
-                    android:id="@+id/cbDeviceState"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:checked="false"
-                    android:drawableRight="@drawable/lw013_selector_cb_btn"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="Device State"
-                    android:textColor="@color/lw013_black_333333"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    style="@style/lw013_divider_line"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cbDeviceState" />
-
-                <CheckBox
-                    android:id="@+id/cb_low_power"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:button="@null"
-                    android:checked="false"
-                    android:drawableRight="@drawable/lw013_selector_cb_btn"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="Low-power"
-                    android:textColor="@color/lw013_black_333333"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cbDeviceState" />
-
-                <View
-                    style="@style/lw013_divider_line"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_low_power" />
-
-                <CheckBox
-                    android:id="@+id/cbCharging"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:button="@null"
-                    android:checked="false"
-                    android:drawableRight="@drawable/lw013_selector_cb_btn"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="Charging"
-                    android:textColor="@color/lw013_black_333333"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_low_power" />
-
-                <View
-                    style="@style/lw013_divider_line"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cbCharging" />
-
-                <CheckBox
-                    android:id="@+id/cbFullCharge"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:button="@null"
-                    android:checked="false"
-                    android:drawableRight="@drawable/lw013_selector_cb_btn"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="Full Charge"
-                    android:textColor="@color/lw013_black_333333"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cbCharging" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/lw013_selector_cb_btn"
+                android:padding="10dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="Low-power"
+                android:textColor="@color/lw013_black_333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -221,7 +135,7 @@
                 android:padding="10dp">
 
                 <CheckBox
-                    android:id="@+id/cb_fix"
+                    android:id="@+id/cb_alarm_triggered_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:button="@null"
@@ -229,7 +143,7 @@
                     android:drawableRight="@drawable/lw013_selector_cb_btn"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:text="In Fix"
+                    android:text="Alarm Type1 Triggered"
                     android:textColor="@color/lw013_black_333333"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -243,10 +157,10 @@
                     android:layout_marginTop="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_fix" />
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_1" />
 
                 <CheckBox
-                    android:id="@+id/cb_fix_success"
+                    android:id="@+id/cb_alarm_exit_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -255,13 +169,39 @@
                     android:drawableRight="@drawable/lw013_selector_cb_btn"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:text="Fix Successful"
+                    android:text="Alarm Type1 Exit"
                     android:textColor="@color/lw013_black_333333"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_fix" />
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/lw013_white_ffffff"
+                android:padding="10dp">
+
+                <CheckBox
+                    android:id="@+id/cb_alarm_triggered_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/lw013_selector_cb_btn"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="Alarm Type2 Triggered"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     style="@style/lw013_divider_line"
@@ -269,10 +209,10 @@
                     android:layout_marginTop="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_fix_success" />
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_2" />
 
                 <CheckBox
-                    android:id="@+id/cb_fix_fail"
+                    android:id="@+id/cb_alarm_exit_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -281,13 +221,66 @@
                     android:drawableRight="@drawable/lw013_selector_cb_btn"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:text="Fail To Fix"
+                    android:text="Alarm Type1 Exit"
                     android:textColor="@color/lw013_black_333333"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cb_fix_success" />
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/lw013_white_ffffff"
+                android:padding="10dp">
+
+                <CheckBox
+                    android:id="@+id/cb_alarm_triggered_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/lw013_selector_cb_btn"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="Alarm Type3 Triggered"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    style="@style/lw013_divider_line"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_3" />
+
+                <CheckBox
+                    android:id="@+id/cb_alarm_exit_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableRight="@drawable/lw013_selector_cb_btn"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="Alarm Type3 Exit"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cb_alarm_triggered_3" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

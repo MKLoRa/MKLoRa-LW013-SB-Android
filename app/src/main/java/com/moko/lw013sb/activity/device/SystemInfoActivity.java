@@ -181,12 +181,12 @@ public class SystemInfoActivity extends BaseActivity {
         });
     }
 
-//    public void onBatteryConsumeInfo(View view) {
-//        if (isWindowLocked())
-//            return;
-//        Intent intent = new Intent(this, BatteryConsumeActivity.class);
-//        startActivity(intent);
-//    }
+    public void onBatteryConsumeInfo(View view) {
+        if (isWindowLocked())
+            return;
+        Intent intent = new Intent(this, BatteryConsumeActivity.class);
+        startActivity(intent);
+    }
 
     public void onDebuggerMode(View view) {
         if (isWindowLocked())

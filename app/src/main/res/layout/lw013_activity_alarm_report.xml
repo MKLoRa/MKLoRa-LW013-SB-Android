@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lw013_white_ffffff"
+    android:background="@color/lw013_grey_f2f2f2"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -31,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/timing_mode"
+            android:text="@string/general_alarm_report"
             android:textColor="@color/lw013_white_ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -44,41 +43,34 @@
             android:onClick="onSave"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/lw013_ic_save" />
+            android:src="@drawable/lw013_ic_save"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="@color/lw013_white_ffffff"
         android:padding="10dp">
 
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Positioning Strategy"
+            android:id="@+id/tvAlarmType1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:gravity="center_vertical"
+            android:onClick="onAlarmType"
+            android:tag="0"
+            android:text="Alarm Type1 Settings"
             android:textColor="@color/lw013_black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/tv_timing_pos_strategy"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_timing_pos_strategy" />
-
-        <TextView
-            android:id="@+id/tv_timing_pos_strategy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/lw013_shape_radius_blue_btn_bg"
-            android:clickable="true"
-            android:gravity="center"
-            android:minWidth="70dp"
-            android:onClick="selectPosStrategy"
-            android:padding="12dp"
-            android:text="GPS"
-            android:textColor="@color/lw013_white_ffffff"
-            android:textSize="15sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,42 +80,51 @@
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_timing_pos_strategy" />
-
+            app:layout_constraintTop_toBottomOf="@id/tvAlarmType1" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reporting Time Point"
+            android:id="@+id/tvAlarmType2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:gravity="center_vertical"
+            android:onClick="onAlarmType"
+            android:tag="1"
+            android:text="Alarm Type2 Settings"
             android:textColor="@color/lw013_black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/iv_time_point_add"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_time_point_add" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAlarmType1" />
 
-        <ImageView
-            android:id="@+id/iv_time_point_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <View
+            style="@style/lw013_divider_line"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAlarmType2" />
+
+        <TextView
+            android:id="@+id/tvAlarmType3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:onClick="onTimePointAdd"
-            android:padding="12dp"
-            android:src="@drawable/lw013_ic_add"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_timing_pos_strategy" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_time_point"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:gravity="center_vertical"
+            android:onClick="onAlarmType"
+            android:tag="2"
+            android:text="Alarm Type3 Settings"
+            android:textColor="@color/lw013_black_333333"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_time_point_add"
-            tools:listitem="@layout/lw013_item_time_point" />
-
-
+            app:layout_constraintTop_toBottomOf="@id/tvAlarmType2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>
