@@ -1195,6 +1195,42 @@ public class OrderTaskAssembler {
         return task;
     }
 
+    public static OrderTask getNonAlarmVoltageThreshold() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_NON_ALARM_VOLTAGE_THRESHOLD);
+        return task;
+    }
+
+    public static OrderTask getNonAlarmMinSampleInterval() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_NON_ALARM_MIN_SAMPLE_INTERVAL);
+        return task;
+    }
+
+    public static OrderTask getNonAlarmSampleTimes() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_NON_ALARM_SAMPLE_TIMES);
+        return task;
+    }
+
+    public static OrderTask getAlarmVoltageThreshold() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_ALARM_VOLTAGE_THRESHOLD);
+        return task;
+    }
+
+    public static OrderTask getAlarmMinSampleInterval() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_ALARM_MIN_SAMPLE_INTERVAL);
+        return task;
+    }
+
+    public static OrderTask getAlarmSampleTimes() {
+        ParamsReadTask task = new ParamsReadTask();
+        task.setData(ParamsKeyEnum.KEY_ALARM_SAMPLE_TIMES);
+        return task;
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////
     // WRITE
@@ -2333,4 +2369,39 @@ public class OrderTaskAssembler {
         return task;
     }
 
+    public static OrderTask setNonAlarmVoltageThreshold(@IntRange(from = 44, to = 64) int threshold) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setNonAlarmVoltageThreshold(threshold);
+        return task;
+    }
+
+    public static OrderTask setNonAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setNonAlarmMinSampleInterval(interval);
+        return task;
+    }
+
+    public static OrderTask setNonAlarmSampleTimes(@IntRange(from = 1, to = 100) int times) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setNonAlarmSampleTimes(times);
+        return task;
+    }
+
+    public static OrderTask setAlarmVoltageThreshold(@IntRange(from = 44, to = 64) int threshold) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setAlarmVoltageThreshold(threshold);
+        return task;
+    }
+
+    public static OrderTask setAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setAlarmMinSampleInterval(interval);
+        return task;
+    }
+
+    public static OrderTask setAlarmSampleTimes(@IntRange(from = 1, to = 100) int times) {
+        ParamsWriteTask task = new ParamsWriteTask();
+        task.setAlarmSampleTimes(times);
+        return task;
+    }
 }

@@ -33,6 +33,16 @@
             android:textColor="@color/lw013_white_ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="onSave"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:src="@drawable/lw013_ic_save" />
     </RelativeLayout>
 
     <ScrollView
@@ -155,6 +165,271 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/lw013_white_ffffff"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tvNonAlarmVoltageThreshold"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/lw013_shape_radius_blue_btn_bg"
+                    android:gravity="center"
+                    android:text="2.9"
+                    android:textColor="@color/lw013_white_ffffff"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toLeftOf="@id/tvNonAlarmVoltageThresholdUnit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvNonAlarmVoltageThresholdUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="V"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Non-alarm Voltage Threshold"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    style="@style/lw013_divider_line"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNonAlarmVoltageThreshold" />
+
+                <EditText
+                    android:id="@+id/etNonAlarmMinSampleInterval"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:hint="1~14400"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvNonAlarmMinSampleIntervalUnit"
+                    app:layout_constraintRight_toLeftOf="@id/tvNonAlarmMinSampleIntervalUnit" />
+
+                <TextView
+                    android:id="@+id/tvNonAlarmMinSampleIntervalUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Mins"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNonAlarmVoltageThresholdUnit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Min. Sample Interval"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvNonAlarmMinSampleIntervalUnit"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <View
+                    style="@style/lw013_divider_line"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etNonAlarmMinSampleInterval" />
+
+                <EditText
+                    android:id="@+id/etNonAlarmSampleTimes"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:hint="1~100"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvNonAlarmSampleTimesUnit"
+                    app:layout_constraintRight_toLeftOf="@id/tvNonAlarmSampleTimesUnit" />
+
+                <TextView
+                    android:id="@+id/tvNonAlarmSampleTimesUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Times"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNonAlarmMinSampleIntervalUnit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Sample Times"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvNonAlarmSampleTimesUnit"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/lw013_white_ffffff"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tvAlarmVoltageThreshold"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/lw013_shape_radius_blue_btn_bg"
+                    android:gravity="center"
+                    android:text="2.9"
+                    android:textColor="@color/lw013_white_ffffff"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toLeftOf="@id/tvAlarmVoltageThresholdUnit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvAlarmVoltageThresholdUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="V"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Alarm Voltage Threshold"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    style="@style/lw013_divider_line"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAlarmVoltageThreshold" />
+
+                <EditText
+                    android:id="@+id/etAlarmMinSampleInterval"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:hint="1~14400"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvAlarmMinSampleIntervalUnit"
+                    app:layout_constraintRight_toLeftOf="@id/tvAlarmMinSampleIntervalUnit" />
+
+                <TextView
+                    android:id="@+id/tvAlarmMinSampleIntervalUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Mins"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAlarmVoltageThresholdUnit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Min. Sample Interval"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvAlarmMinSampleIntervalUnit"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+
+                <View
+                    style="@style/lw013_divider_line"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etAlarmMinSampleInterval" />
+
+                <EditText
+                    android:id="@+id/etAlarmSampleTimes"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:hint="1~100"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvAlarmSampleTimesUnit"
+                    app:layout_constraintRight_toLeftOf="@id/tvAlarmSampleTimesUnit" />
+
+                <TextView
+                    android:id="@+id/tvAlarmSampleTimesUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Times"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAlarmMinSampleIntervalUnit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Sample Times"
+                    android:textColor="@color/lw013_black_333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tvAlarmSampleTimesUnit"
+                    app:layout_constraintLeft_toLeftOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
