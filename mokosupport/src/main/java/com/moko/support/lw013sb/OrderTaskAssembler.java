@@ -125,11 +125,11 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask getLowPowerPercent() {
-        ParamsReadTask task = new ParamsReadTask();
-        task.setData(ParamsKeyEnum.KEY_LOW_POWER_PERCENT);
-        return task;
-    }
+//    public static OrderTask getLowPowerPercent() {
+//        ParamsReadTask task = new ParamsReadTask();
+//        task.setData(ParamsKeyEnum.KEY_LOW_POWER_PERCENT);
+//        return task;
+//    }
 
     public static OrderTask getBuzzerSoundChoose() {
         ParamsReadTask task = new ParamsReadTask();
@@ -1306,11 +1306,11 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setLowPowerPercent(@IntRange(from = 30, to = 99) int percent) {
-        ParamsWriteTask task = new ParamsWriteTask();
-        task.setLowPowerPercent(percent);
-        return task;
-    }
+//    public static OrderTask setLowPowerPercent(@IntRange(from = 30, to = 99) int percent) {
+//        ParamsWriteTask task = new ParamsWriteTask();
+//        task.setLowPowerPercent(percent);
+//        return task;
+//    }
 
     public static OrderTask setBuzzerSound(@IntRange(from = 0, to = 2) int buzzer) {
         ParamsWriteTask task = new ParamsWriteTask();

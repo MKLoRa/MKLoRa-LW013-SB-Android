@@ -217,7 +217,7 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
                                             ToastUtils.showToast(DeviceInfoActivity.this, "Time sync completed!");
                                         break;
                                     case KEY_TIME_ZONE:
-                                    case KEY_LOW_POWER_PERCENT:
+//                                    case KEY_LOW_POWER_PERCENT:
                                     case KEY_LOW_POWER_PAYLOAD_ENABLE:
                                         if (result != 1) {
                                             savedParamsError = true;
@@ -285,12 +285,12 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
                                             deviceFragment.setLowPowerPayload(enable);
                                         }
                                         break;
-                                    case KEY_LOW_POWER_PERCENT:
-                                        if (length > 0) {
-                                            int lowPower = value[5] & 0xFF;
-                                            deviceFragment.setLowPower(lowPower);
-                                        }
-                                        break;
+//                                    case KEY_LOW_POWER_PERCENT:
+//                                        if (length > 0) {
+//                                            int lowPower = value[5] & 0xFF;
+//                                            deviceFragment.setLowPower(lowPower);
+//                                        }
+//                                        break;
                                 }
                             }
 
@@ -518,7 +518,7 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         List<OrderTask> orderTasks = new ArrayList<>();
         // device
         orderTasks.add(OrderTaskAssembler.getTimeZone());
-        orderTasks.add(OrderTaskAssembler.getLowPowerPercent());
+//        orderTasks.add(OrderTaskAssembler.getLowPowerPercent());
         orderTasks.add(OrderTaskAssembler.getLowPowerPayloadEnable());
         orderTasks.add(OrderTaskAssembler.getLowPowerReportInterval());
         LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));

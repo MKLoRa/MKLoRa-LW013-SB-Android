@@ -221,7 +221,7 @@
                     android:drawableRight="@drawable/lw013_selector_cb_btn"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:text="Alarm Type1 Exit"
+                    android:text="Alarm Type2 Exit"
                     android:textColor="@color/lw013_black_333333"
                     android:textSize="15sp"
                     android:textStyle="bold"

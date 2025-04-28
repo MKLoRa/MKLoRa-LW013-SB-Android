@@ -86,9 +86,9 @@ public class DeviceFragment extends Fragment {
         mBind.cbLowPowerPayload.setChecked(enable == 1);
     }
 
-    public void setLowPower(int lowPower) {
-        mBind.etLowPowerPrompt.setText(String.valueOf(lowPower));
-    }
+//    public void setLowPower(int lowPower) {
+//        mBind.etLowPowerPrompt.setText(String.valueOf(lowPower));
+//    }
 
     public boolean isValid() {
         final String intervalStr = mBind.etLowPowerReportInterval.getText().toString();
@@ -98,25 +98,25 @@ public class DeviceFragment extends Fragment {
         if (interval < 1 || interval > 255) {
             return false;
         }
-        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
-        if (TextUtils.isEmpty(promptStr))
-            return false;
-        final int prompt = Integer.parseInt(promptStr);
-        if (prompt < 30 || prompt > 99) {
-            return false;
-        }
+//        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
+//        if (TextUtils.isEmpty(promptStr))
+//            return false;
+//        final int prompt = Integer.parseInt(promptStr);
+//        if (prompt < 30 || prompt > 99) {
+//            return false;
+//        }
         return true;
     }
 
     public void saveParams() {
         final String intervalStr = mBind.etLowPowerReportInterval.getText().toString();
         final int interval = Integer.parseInt(intervalStr);
-        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
-        final int prompt = Integer.parseInt(promptStr);
+//        final String promptStr = mBind.etLowPowerPrompt.getText().toString();
+//        final int prompt = Integer.parseInt(promptStr);
         ArrayList<OrderTask> orderTasks = new ArrayList<>();
         orderTasks.add(OrderTaskAssembler.setTimeZone(mSelectedTimeZone - 24));
         orderTasks.add(OrderTaskAssembler.setLowPowerPayloadEnable(mBind.cbLowPowerPayload.isChecked() ? 1 : 0));
-        orderTasks.add(OrderTaskAssembler.setLowPowerPercent(prompt));
+//        orderTasks.add(OrderTaskAssembler.setLowPowerPercent(prompt));
         orderTasks.add(OrderTaskAssembler.setLowPowerReportInterval(interval));
         LoRaLW013SBMokoSupport.getInstance().sendOrder(orderTasks.toArray(new OrderTask[]{}));
     }
