@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lw013_grey_f2f2f2"
+    android:background="@color/grey_f2f2f2"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/lw013_blue_2f84d0">
+        android:background="@color/blue_2f84d0">
 
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:drawableLeft="@drawable/lw013_ic_back"
+            android:drawableLeft="@drawable/ic_back"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
             android:onClick="onBack"
             android:paddingLeft="16dp"
             android:text=""
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="15sp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="ON/OFF Settings"
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -37,7 +37,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lw013_white_ffffff"
+        android:background="@color/white_ffffff"
         android:orientation="vertical"
         android:paddingStart="10dp">
 
@@ -53,7 +53,7 @@
                 android:layout_weight="1.0"
                 android:gravity="center_vertical"
                 android:text="ON/Off Method"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/lw013_shape_radius_blue_btn_bg"
+                android:background="@drawable/shape_radius_blue_btn_bg"
                 android:clickable="true"
                 android:gravity="center"
                 android:minWidth="70dp"
@@ -70,11 +70,11 @@
                 android:padding="12dp"
                 android:tag="0"
                 android:text="Continuous approach"
-                android:textColor="@color/lw013_white_ffffff"
+                android:textColor="@color/white_ffffff"
                 android:textSize="15sp" />
         </LinearLayout>
 
-        <View style="@style/lw013_divider_line" />
+        <View style="@style/divider_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Shutdown Payload"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -100,10 +100,10 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:src="@drawable/lw013_ic_checked" />
+                android:src="@drawable/ic_checked" />
         </LinearLayout>
 
-        <View style="@style/lw013_divider_line" />
+        <View style="@style/divider_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="OFF by Magnetic"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -129,10 +129,10 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:src="@drawable/lw013_ic_checked" />
+                android:src="@drawable/ic_checked" />
         </LinearLayout>
 
-        <View style="@style/lw013_divider_line" />
+        <View style="@style/divider_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Power Off"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -158,7 +158,7 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="5dp"
-                android:src="@drawable/lw013_ic_unchecked" />
+                android:src="@drawable/ic_unchecked" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

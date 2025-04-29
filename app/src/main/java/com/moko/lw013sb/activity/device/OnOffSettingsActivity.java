@@ -17,9 +17,9 @@ import com.moko.ble.lib.utils.MokoUtils;
 import com.moko.lw013sb.R;
 import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityOnOffSettingsBinding;
-import com.moko.lw013sb.dialog.AlertMessageDialog;
-import com.moko.lw013sb.dialog.BottomDialog;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.dialog.AlertMessageDialog;
+import com.moko.lib.loraui.dialog.BottomDialog;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 import com.moko.support.lw013sb.entity.OrderCHAR;
@@ -182,14 +182,14 @@ public class OnOffSettingsActivity extends BaseActivity {
                                     if (length == 1) {
                                         int enable = value[5] & 0xFF;
                                         shutdownPayloadOpen = enable == 1;
-                                        mBind.ivShutdownPayload.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
+                                        mBind.ivShutdownPayload.setImageResource(enable == 1 ? R.drawable.ic_checked : R.drawable.ic_unchecked);
                                     }
                                     break;
                                 case KEY_OFF_BY_HALL:
                                     if (length == 1) {
                                         int enable = value[5] & 0xFF;
                                         offByHallOpen = enable == 1;
-                                        mBind.ivOffByHall.setImageResource(enable == 1 ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
+                                        mBind.ivOffByHall.setImageResource(enable == 1 ? R.drawable.ic_checked : R.drawable.ic_unchecked);
                                     }
                                     break;
                             }

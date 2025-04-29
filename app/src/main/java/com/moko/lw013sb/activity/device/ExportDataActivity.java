@@ -25,8 +25,8 @@ import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.activity.LoRaLW013SBMainActivity;
 import com.moko.lw013sb.adapter.ExportDataListAdapter;
 import com.moko.lw013sb.databinding.Lw013ActivityExportDataBinding;
-import com.moko.lw013sb.dialog.AlertMessageDialog;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.dialog.AlertMessageDialog;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.lw013sb.utils.Utils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
@@ -252,7 +252,7 @@ public class ExportDataActivity extends BaseActivity {
                                                 mIsSync = true;
                                                 mBind.tvEmpty.setEnabled(false);
                                                 mBind.tvExport.setEnabled(false);
-                                                Animation animation = AnimationUtils.loadAnimation(this, R.anim.lw013_rotate_refresh);
+                                                Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
                                                 mBind.ivSync.startAnimation(animation);
                                                 mBind.tvSync.setText("Stop");
                                             } else {
@@ -276,7 +276,7 @@ public class ExportDataActivity extends BaseActivity {
                                             mBind.tvStart.setEnabled(false);
                                             mBind.tvEmpty.setEnabled(false);
                                             mBind.tvExport.setEnabled(false);
-                                            Animation animation = AnimationUtils.loadAnimation(this, R.anim.lw013_rotate_refresh);
+                                            Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
                                             mBind.ivSync.startAnimation(animation);
                                             mBind.tvSync.setText("Stop");
                                         }

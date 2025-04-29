@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lw013_grey_f2f2f2"
+    android:background="@color/grey_f2f2f2"
     android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/lw013_blue_2f84d0">
+        android:background="@color/blue_2f84d0">
 
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:drawableLeft="@drawable/lw013_ic_back"
+            android:drawableLeft="@drawable/ic_back"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
             android:onClick="onBack"
             android:paddingLeft="16dp"
             android:text=""
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="15sp" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Alarm Type1 Settings"
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
             android:onClick="onSave"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/lw013_ic_save" />
+            android:src="@drawable/ic_save" />
     </RelativeLayout>
 
     <CheckBox
@@ -54,15 +54,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/lw013_white_ffffff"
+        android:background="@color/white_ffffff"
         android:button="@null"
         android:checked="false"
-        android:drawableRight="@drawable/lw013_selector_cb_btn"
+        android:drawableRight="@drawable/selector_cb_btn"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="Function Switch"
-        android:textColor="@color/lw013_black_333333"
+        android:textColor="@color/black_333333"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -72,7 +72,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/lw013_white_ffffff"
+        android:background="@color/white_ffffff"
         android:paddingStart="10dp"
         android:paddingEnd="10dp">
 
@@ -83,7 +83,7 @@
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:text="Buzzer When Alarm was triggered"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -93,12 +93,12 @@
             android:id="@+id/tvBuzzerEnable"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:background="@drawable/lw013_shape_radius_blue_btn_bg"
+            android:background="@drawable/shape_radius_blue_btn_bg"
             android:gravity="center"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="No"
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv2"
             app:layout_constraintRight_toRightOf="parent"
@@ -106,7 +106,7 @@
 
         <View
             android:id="@+id/line2"
-            style="@style/lw013_divider_line"
+            style="@style/divider_line"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv2" />
 
@@ -116,7 +116,7 @@
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:text="Report Interval"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -131,7 +131,7 @@
             android:hint="1~1440"
             android:inputType="number"
             android:maxLength="4"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv3"
             app:layout_constraintRight_toLeftOf="@+id/tv3Unit"
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="s"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv3"
             app:layout_constraintRight_toRightOf="parent"
@@ -156,7 +156,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/lw013_white_ffffff"
+        android:background="@color/white_ffffff"
         android:orientation="vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp">
@@ -167,14 +167,14 @@
             android:layout_height="50dp"
             android:button="@null"
             android:checked="false"
-            android:drawableRight="@drawable/lw013_selector_cb_btn"
+            android:drawableRight="@drawable/selector_cb_btn"
             android:gravity="center_vertical"
             android:text="Exit Alarm By Button"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold" />
 
-        <View style="@style/lw013_divider_line" />
+        <View style="@style/divider_line" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -186,7 +186,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:text="Exit Alarm Type"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -201,7 +201,7 @@
                 android:hint="10~15"
                 android:inputType="number"
                 android:maxLength="2"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv4"
                 app:layout_constraintRight_toLeftOf="@+id/tv4Unit"
@@ -212,7 +212,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="s"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv4"
                 app:layout_constraintRight_toRightOf="parent"
@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:text="Long press"
-                android:textColor="@color/lw013_black_333333"
+                android:textColor="@color/black_333333"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv4"
                 app:layout_constraintRight_toLeftOf="@id/etAlarmType"

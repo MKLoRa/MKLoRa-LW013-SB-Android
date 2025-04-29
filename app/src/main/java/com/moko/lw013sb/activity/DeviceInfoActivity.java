@@ -29,12 +29,12 @@ import com.moko.lw013sb.activity.general.AlarmReportActivity;
 import com.moko.lw013sb.activity.lora.LoRaAppSettingActivity;
 import com.moko.lw013sb.activity.lora.LoRaConnSettingActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityDeviceInfoBinding;
-import com.moko.lw013sb.dialog.AlertMessageDialog;
-import com.moko.lw013sb.dialog.ChangePasswordDialog;
+import com.moko.lib.loraui.dialog.AlertMessageDialog;
+import com.moko.lib.loraui.dialog.ChangePasswordDialog;
 import com.moko.lw013sb.fragment.DeviceFragment;
 import com.moko.lw013sb.fragment.GeneralFragment;
 import com.moko.lw013sb.fragment.LoRaFragment;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 import com.moko.support.lw013sb.entity.OrderCHAR;
@@ -76,7 +76,7 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
         fragmentManager = getFragmentManager();
         initFragment();
         mBind.radioBtnLora.setChecked(true);
-        mBind.tvTitle.setText(R.string.title_lora_lw013);
+        mBind.tvTitle.setText(R.string.title_lora);
         mBind.rgOptions.setOnCheckedChangeListener(this);
         EventBus.getDefault().register(this);
         mUploadMode = new ArrayList<>();
@@ -537,7 +537,7 @@ public class DeviceInfoActivity extends BaseActivity implements RadioGroup.OnChe
     }
 
     private void showLoRaAndGetData() {
-        mBind.tvTitle.setText(R.string.title_lora_lw013);
+        mBind.tvTitle.setText(R.string.title_lora);
         mBind.ivSave.setVisibility(View.GONE);
         fragmentManager.beginTransaction()
                 .show(loraFragment)

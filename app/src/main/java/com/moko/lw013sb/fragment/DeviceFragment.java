@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.moko.ble.lib.task.OrderTask;
 import com.moko.lw013sb.activity.DeviceInfoActivity;
 import com.moko.lw013sb.databinding.Lw013FragmentDeviceBinding;
-import com.moko.lw013sb.dialog.BottomDialog;
+import com.moko.lib.loraui.dialog.BottomDialog;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 

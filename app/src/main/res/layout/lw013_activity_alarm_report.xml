@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lw013_grey_f2f2f2"
+    android:background="@color/grey_f2f2f2"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/lw013_blue_2f84d0">
+        android:background="@color/blue_2f84d0">
 
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:drawableLeft="@drawable/lw013_ic_back"
+            android:drawableLeft="@drawable/ic_back"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
             android:onClick="onBack"
             android:paddingLeft="16dp"
             android:text=""
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="15sp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/general_alarm_report"
-            android:textColor="@color/lw013_white_ffffff"
+            android:textColor="@color/white_ffffff"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:onClick="onSave"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/lw013_ic_save"
+            android:src="@drawable/ic_save"
             android:visibility="gone" />
 
     </RelativeLayout>
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/lw013_white_ffffff"
+        android:background="@color/white_ffffff"
         android:padding="10dp">
 
 
@@ -62,12 +62,12 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:clickable="true"
-            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:drawableRight="@drawable/ic_arrow_right"
             android:gravity="center_vertical"
             android:onClick="onAlarmType"
             android:tag="0"
             android:text="Alarm Type1 Settings"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            style="@style/lw013_divider_line"
+            style="@style/divider_line"
             android:layout_width="0dp"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -88,12 +88,12 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:drawableRight="@drawable/ic_arrow_right"
             android:gravity="center_vertical"
             android:onClick="onAlarmType"
             android:tag="1"
             android:text="Alarm Type2 Settings"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvAlarmType1" />
 
         <View
-            style="@style/lw013_divider_line"
+            style="@style/divider_line"
             android:layout_width="0dp"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -114,12 +114,12 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:drawableRight="@drawable/lw013_ic_arrow_right"
+            android:drawableRight="@drawable/ic_arrow_right"
             android:gravity="center_vertical"
             android:onClick="onAlarmType"
             android:tag="2"
             android:text="Alarm Type3 Settings"
-            android:textColor="@color/lw013_black_333333"
+            android:textColor="@color/black_333333"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"

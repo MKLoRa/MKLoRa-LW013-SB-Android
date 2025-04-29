@@ -27,7 +27,7 @@ import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.databinding.Lw013ActivitySystemInfoBinding;
 import com.moko.lw013sb.service.DfuService;
 import com.moko.lw013sb.utils.FileUtils;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 import com.moko.support.lw013sb.entity.OrderCHAR;

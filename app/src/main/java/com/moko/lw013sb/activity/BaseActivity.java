@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.SystemClock;
 
 import com.elvishew.xlog.XLog;
-import com.moko.lw013sb.dialog.LoadingDialog;
-import com.moko.lw013sb.dialog.LoadingMessageDialog;
+import com.moko.lib.loraui.dialog.LoadingDialog;
+import com.moko.lib.loraui.dialog.LoadingMessageDialog;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;

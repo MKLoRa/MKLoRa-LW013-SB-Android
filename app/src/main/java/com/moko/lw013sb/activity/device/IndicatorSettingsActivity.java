@@ -17,7 +17,7 @@ import com.moko.ble.lib.task.OrderTaskResponse;
 import com.moko.ble.lib.utils.MokoUtils;
 import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityIndicatorSettingsBinding;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 import com.moko.support.lw013sb.entity.OrderCHAR;

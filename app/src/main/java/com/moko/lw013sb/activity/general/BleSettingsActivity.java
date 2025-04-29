@@ -16,9 +16,9 @@ import com.moko.ble.lib.utils.MokoUtils;
 import com.moko.lw013sb.R;
 import com.moko.lw013sb.activity.BaseActivity;
 import com.moko.lw013sb.databinding.Lw013ActivityBleSettingsBinding;
-import com.moko.lw013sb.dialog.ChangePasswordDialog;
+import com.moko.lib.loraui.dialog.ChangePasswordDialog;
 import com.moko.lw013sb.entity.TxPowerEnum;
-import com.moko.lw013sb.utils.ToastUtils;
+import com.moko.lib.loraui.utils.ToastUtils;
 import com.moko.support.lw013sb.LoRaLW013SBMokoSupport;
 import com.moko.support.lw013sb.OrderTaskAssembler;
 import com.moko.support.lw013sb.entity.OrderCHAR;
@@ -168,7 +168,7 @@ public class BleSettingsActivity extends BaseActivity implements SeekBar.OnSeekB
                                             int enable = value[5] & 0xFF;
                                             mPasswordVerifyEnable = enable == 1;
                                             mPasswordVerifyDisable = enable == 0;
-                                            mBind.ivLoginMode.setImageResource(mPasswordVerifyEnable ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
+                                            mBind.ivLoginMode.setImageResource(mPasswordVerifyEnable ? R.drawable.ic_checked : R.drawable.ic_unchecked);
                                             mBind.tvChangePassword.setVisibility(mPasswordVerifyEnable ? View.VISIBLE : View.GONE);
                                         }
                                         break;
@@ -289,7 +289,7 @@ public class BleSettingsActivity extends BaseActivity implements SeekBar.OnSeekB
         if (isWindowLocked())
             return;
         mPasswordVerifyEnable = !mPasswordVerifyEnable;
-        mBind.ivLoginMode.setImageResource(mPasswordVerifyEnable ? R.drawable.lw013_ic_checked : R.drawable.lw013_ic_unchecked);
+        mBind.ivLoginMode.setImageResource(mPasswordVerifyEnable ? R.drawable.ic_checked : R.drawable.ic_unchecked);
         mBind.tvChangePassword.setVisibility(mPasswordVerifyEnable ? View.VISIBLE : View.GONE);
     }
 
