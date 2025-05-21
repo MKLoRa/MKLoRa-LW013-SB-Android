@@ -2375,7 +2375,7 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setNonAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+    public static OrderTask setNonAlarmMinSampleInterval(@IntRange(from = 1, to = 1440) int interval) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setNonAlarmMinSampleInterval(interval);
         return task;
@@ -2393,7 +2393,7 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+    public static OrderTask setAlarmMinSampleInterval(@IntRange(from = 1, to = 1440) int interval) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setAlarmMinSampleInterval(interval);
         return task;

@@ -227,7 +227,7 @@ public class SelfTestActivity extends BaseActivity {
         if (TextUtils.isEmpty(mBind.etNonAlarmMinSampleInterval.getText())) return false;
         String intervalNonStr = mBind.etNonAlarmMinSampleInterval.getText().toString();
         int intervalNon = Integer.parseInt(intervalNonStr);
-        if (intervalNon < 1 || intervalNon > 14400)
+        if (intervalNon < 1 || intervalNon > 1440)
             return false;
         if (TextUtils.isEmpty(mBind.etNonAlarmSampleTimes.getText())) return false;
         String timesNonStr = mBind.etNonAlarmSampleTimes.getText().toString();
@@ -237,7 +237,7 @@ public class SelfTestActivity extends BaseActivity {
         if (TextUtils.isEmpty(mBind.etAlarmMinSampleInterval.getText())) return false;
         String intervalStr = mBind.etAlarmMinSampleInterval.getText().toString();
         int interval = Integer.parseInt(intervalStr);
-        if (interval < 1 || interval > 14400)
+        if (interval < 1 || interval > 1440)
             return false;
         if (TextUtils.isEmpty(mBind.etAlarmSampleTimes.getText())) return false;
         String timesStr = mBind.etAlarmSampleTimes.getText().toString();

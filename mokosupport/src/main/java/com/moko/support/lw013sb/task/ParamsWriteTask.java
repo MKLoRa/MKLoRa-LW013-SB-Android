@@ -2635,7 +2635,7 @@ public class ParamsWriteTask extends OrderTask {
         };
     }
 
-    public void setNonAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+    public void setNonAlarmMinSampleInterval(@IntRange(from = 1, to = 1440) int interval) {
         byte[] rawDataBytes = MokoUtils.toByteArray(interval, 2);
         byte[] cmdBytes = MokoUtils.toByteArray(ParamsKeyEnum.KEY_NON_ALARM_MIN_SAMPLE_INTERVAL.getParamsKey(), 2);
         response.responseValue = data = new byte[]{
@@ -2673,7 +2673,7 @@ public class ParamsWriteTask extends OrderTask {
         };
     }
 
-    public void setAlarmMinSampleInterval(@IntRange(from = 1, to = 14400) int interval) {
+    public void setAlarmMinSampleInterval(@IntRange(from = 1, to = 1440) int interval) {
         byte[] rawDataBytes = MokoUtils.toByteArray(interval, 2);
         byte[] cmdBytes = MokoUtils.toByteArray(ParamsKeyEnum.KEY_ALARM_MIN_SAMPLE_INTERVAL.getParamsKey(), 2);
         response.responseValue = data = new byte[]{

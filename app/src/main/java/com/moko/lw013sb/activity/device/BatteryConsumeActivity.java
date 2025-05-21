@@ -135,7 +135,7 @@ public class BatteryConsumeActivity extends BaseActivity {
                                             int loraTransmissionTimes = MokoUtils.toInt(Arrays.copyOfRange(value, 57, 61));
                                             mBind.tvLoraTransmissionTimes.setText(String.format("%d times", loraTransmissionTimes));
                                             int loraPower = MokoUtils.toInt(Arrays.copyOfRange(value, 61, 65));
-                                            mBind.tvLoraPower.setText(String.format("%d s", loraPower));
+                                            mBind.tvLoraPower.setText(String.format("%d mAS", loraPower));
                                             String batteryConsumeStr = MokoUtils.getDecimalFormat("0.###").format(MokoUtils.toInt(Arrays.copyOfRange(value, 65, 69)) * 0.001f);
                                             mBind.tvBatteryConsume.setText(String.format("%s mAH", batteryConsumeStr));
                                         }
@@ -171,7 +171,7 @@ public class BatteryConsumeActivity extends BaseActivity {
                                             int loraTransmissionTimes = MokoUtils.toInt(Arrays.copyOfRange(value, 57, 61));
                                             mBind.tvLoraTransmissionTimesAll.setText(String.format("%d times", loraTransmissionTimes));
                                             int loraPower = MokoUtils.toInt(Arrays.copyOfRange(value, 61, 65));
-                                            mBind.tvLoraPowerAll.setText(String.format("%d s", loraPower));
+                                            mBind.tvLoraPowerAll.setText(String.format("%d mAS", loraPower));
                                             String batteryConsumeStr = MokoUtils.getDecimalFormat("0.###").format(MokoUtils.toInt(Arrays.copyOfRange(value, 65, 69)) * 0.001f);
                                             mBind.tvBatteryConsumeAll.setText(String.format("%s mAH", batteryConsumeStr));
                                         }
@@ -207,7 +207,7 @@ public class BatteryConsumeActivity extends BaseActivity {
                                             int loraTransmissionTimes = MokoUtils.toInt(Arrays.copyOfRange(value, 57, 61));
                                             mBind.tvLoraTransmissionTimesLast.setText(String.format("%d times", loraTransmissionTimes));
                                             int loraPower = MokoUtils.toInt(Arrays.copyOfRange(value, 61, 65));
-                                            mBind.tvLoraPowerLast.setText(String.format("%d s", loraPower));
+                                            mBind.tvLoraPowerLast.setText(String.format("%d mAS", loraPower));
                                             String batteryConsumeStr = MokoUtils.getDecimalFormat("0.###").format(MokoUtils.toInt(Arrays.copyOfRange(value, 65, 69)) * 0.001f);
                                             mBind.tvBatteryConsumeLast.setText(String.format("%s mAH", batteryConsumeStr));
                                         }
