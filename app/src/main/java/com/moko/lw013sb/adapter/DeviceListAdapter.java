@@ -10,8 +10,6 @@ import com.moko.lw013sb.entity.AdvInfo;
 
 import java.util.Locale;
 
-import androidx.core.content.ContextCompat;
-
 public class DeviceListAdapter extends BaseQuickAdapter<AdvInfo, BaseViewHolder> {
     public DeviceListAdapter() {
         super(R.layout.lw013_list_item_device);
