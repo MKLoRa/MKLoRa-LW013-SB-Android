@@ -2173,7 +2173,7 @@ public class ParamsWriteTask extends OrderTask {
         };
     }
 
-    public void setExitAlarmDuration(@IntRange(from = 10, to = 15) int duration, int type) {
+    public void setExitAlarmDuration(@IntRange(from = 5, to = 15) int duration, int type) {
         byte[] cmdBytes = MokoUtils.toByteArray(ParamsKeyEnum.KEY_EXIT_ALARM_DURATION_1.getParamsKey(), 2);
         if (type == 1)
             cmdBytes = MokoUtils.toByteArray(ParamsKeyEnum.KEY_EXIT_ALARM_DURATION_2.getParamsKey(), 2);

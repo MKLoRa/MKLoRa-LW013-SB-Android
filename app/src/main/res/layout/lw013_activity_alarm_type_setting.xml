@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:hint="10~15"
+                android:hint="5~15"
                 android:inputType="number"
                 android:maxLength="2"
                 android:textColor="@color/black_333333"

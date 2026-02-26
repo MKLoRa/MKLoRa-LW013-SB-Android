@@ -2105,7 +2105,7 @@ public class OrderTaskAssembler {
         return task;
     }
 
-    public static OrderTask setExitAlarmDuration(@IntRange(from = 10, to = 15) int duration, int type) {
+    public static OrderTask setExitAlarmDuration(@IntRange(from = 5, to = 15) int duration, int type) {
         ParamsWriteTask task = new ParamsWriteTask();
         task.setExitAlarmDuration(duration, type);
         return task;

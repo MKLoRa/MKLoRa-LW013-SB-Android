@@ -222,7 +222,7 @@ public class AlarmTypeActivity extends BaseActivity {
         if (TextUtils.isEmpty(mBind.etAlarmType.getText())) return false;
         String durationStr = mBind.etAlarmType.getText().toString();
         int duration = Integer.parseInt(durationStr);
-        return duration >= 10 && duration <= 15;
+        return duration >= 5 && duration <= 15;
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
